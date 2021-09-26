@@ -2,10 +2,7 @@ package com.example.kma_schedule.database.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -26,12 +23,14 @@ public class Record {
     @Column(name = "class_time")
     private ClassTime classTime;
 
-    @Column(name = "group")
+    @OneToOne
+    @JoinColumn(name = "groupId")
     private Group group;
 
     @Column(name = "classroom")
     private Classroom classroom;
 
-    @Column(name = "lecturer")
+    @OneToOne
+    @JoinColumn(name = "lecturerId")
     private Lecturer lecturer;
 }
