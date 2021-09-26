@@ -1,11 +1,8 @@
 package com.example.kma_schedule.database.entity;
 
-
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -23,7 +20,14 @@ public class Record {
 
     private Discipline discipline;
     private ClassTime classTime;
+
+    @OneToOne
+    @JoinColumn(name = "groupId")
     private Group group;
+
     private Classroom classroom;
+
+    @OneToOne
+    @JoinColumn(name = "lecturerId")
     private Lecturer lecturer;
 }
