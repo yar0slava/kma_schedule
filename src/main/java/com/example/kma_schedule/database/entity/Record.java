@@ -17,14 +17,17 @@ public class Record {
     @Id
     private Integer id;
 
-
+    @Column(name = "discipline")
     private Discipline discipline;
+
+    @Column(name = "class_time")
     private ClassTime classTime;
 
     @OneToOne
     @JoinColumn(name = "groupId")
     private Group group;
 
+    @Column(name = "classroom")
     private Classroom classroom;
 
     @OneToOne
