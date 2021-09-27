@@ -17,6 +17,7 @@ public class Record {
     @Id
     private Integer id;
 
+    @OneToOne
     @Column(name = "discipline")
     private Discipline discipline;
 

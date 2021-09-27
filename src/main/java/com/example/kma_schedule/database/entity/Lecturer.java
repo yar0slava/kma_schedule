@@ -3,6 +3,7 @@ package com.example.kma_schedule.database.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name="lecturer")
+@Table(name = "lecturer")
 public class Lecturer {
 
     @Id
@@ -21,4 +22,7 @@ public class Lecturer {
 
     @Column
     private String name;
+
+    @ManyToMany(mappedBy = "instructors")
+    private Set<Discipline> disciplines;
 }
