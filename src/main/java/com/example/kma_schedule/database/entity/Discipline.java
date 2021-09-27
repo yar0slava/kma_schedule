@@ -16,16 +16,16 @@ import java.util.Set;
 public class Discipline {
 
     @Id
-    @Column(name = "discipline_id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer disciplineId;
 
-    @Column(name = "discipline_name")
+    @Column
     private String name;
 
     @ManyToMany
     @JoinTable(name = "lecturers_teach",
-            joinColumns = @JoinColumn(name = "discipline_id"),
-            inverseJoinColumns = @JoinColumn(name = "lecturer_id"))
+            joinColumns = @JoinColumn(name = "disciplineId"),
+            inverseJoinColumns = @JoinColumn(name = "lecturerId"))
     private Set<Lecturer> instructors;
 }
