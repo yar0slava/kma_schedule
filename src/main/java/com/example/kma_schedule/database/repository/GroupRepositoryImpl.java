@@ -1,10 +1,8 @@
 package com.example.kma_schedule.database.repository;
 
 import com.example.kma_schedule.database.entity.Group;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 @Repository
