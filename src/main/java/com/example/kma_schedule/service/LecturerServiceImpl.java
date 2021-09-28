@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LecturerServiceImpl implements LecturerService {
@@ -14,12 +15,17 @@ public class LecturerServiceImpl implements LecturerService {
     private LecturerRepository lecturerRepository;
 
     @Override
-    public List<Lecturer> get() {
-        return lecturerRepository.get();
+    public List<Lecturer> getAll() {
+        return (List<Lecturer>) lecturerRepository.findAll();
     }
 
     @Override
-    public Lecturer get(int id) {
-        return lecturerRepository.get(id);
+    public Optional<Lecturer> getById(int id) {
+        return lecturerRepository.findById(id);
+    }
+
+    @Override
+    public void addNewLecturer(Lecturer lecturer) {
+        lecturerRepository.save(lecturer);
     }
 }

@@ -17,8 +17,13 @@ public class DisciplineServiceImpl implements DisciplineService {
     }
 
     @Override
-    public Optional<Discipline> get(Integer id) {
+    public Optional<Discipline> getById(Integer id) {
         return disciplineRepository.findById(id);
+    }
+
+    @Override
+    public void addNewDiscipline(Discipline discipline) {
+        disciplineRepository.save(discipline);
     }
 
     @Override

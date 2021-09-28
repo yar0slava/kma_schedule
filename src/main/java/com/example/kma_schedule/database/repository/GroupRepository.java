@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface GroupRepository extends CrudRepository<Group, Integer> {
+public interface GroupRepository extends CrudRepository<Group, String> {
     List<Group> findByDegree(String degree);
     List<Group> findBySpecialization(String specialization);
 }
