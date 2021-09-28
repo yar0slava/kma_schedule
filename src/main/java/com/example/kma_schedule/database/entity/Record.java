@@ -22,7 +22,7 @@ public class Record {
     private Discipline discipline;
 
     @ManyToOne
-    @JoinColumn(name = "classTime")
+    @JoinColumn(name = "classTimeId")
     private ClassTime classTime;
 
     @ManyToOne
@@ -30,7 +30,7 @@ public class Record {
     private Group group;
 
     @ManyToOne
-    @JoinColumn(name = "classroom")
+    @JoinColumn(name = "classroomId")
     private Classroom classroom;
 
     @ManyToOne
