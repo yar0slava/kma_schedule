@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DisciplineService {
-    Optional<Discipline> get(Integer id);
-
+    Optional<Discipline> getById(Integer id);
+    void addNewDiscipline(Discipline discipline);
     List<Discipline> getAll();
 }

@@ -1,14 +1,12 @@
 package com.example.kma_schedule.service;
 
-import com.example.kma_schedule.database.repository.RecordRepository;
-import org.springframework.stereotype.Service;
+import com.example.kma_schedule.database.entity.Record;
+import java.util.List;
+import java.util.Optional;
 
-@Service
-public class RecordService {
+public interface RecordService {
 
-    private final RecordRepository recordRepository;
-
-    public RecordService(RecordRepository recordRepository) {
-        this.recordRepository = recordRepository;
-    }
+    Optional<Record> getById(Integer id);
+    void addNewRecord(Record record);
+    List<Record> getAll();
 }
