@@ -21,14 +21,16 @@ public class Record {
     @JoinColumn(name = "disciplineId")
     private Discipline discipline;
 
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "classTime")
     private ClassTime classTime;
 
     @ManyToOne
     @JoinColumn(name = "groupId")
     private Group group;
 
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "classroom")
     private Classroom classroom;
 
     @ManyToOne
