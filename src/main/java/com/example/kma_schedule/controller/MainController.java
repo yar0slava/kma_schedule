@@ -2,24 +2,25 @@ package com.example.kma_schedule.controller;
 
 
 import com.example.kma_schedule.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MainController {
 
-    private final RecordService recordService;
-    private final DisciplineService disciplineService;
-    private final LecturerService lecturerService;
-    private final GroupService groupService;
-    private final ClassroomService classroomService;
-    private final ClassTimeService classTimeService;
+    private final RecordServiceImpl recordService;
+    private final DisciplineServiceImpl disciplineService;
+    private final LecturerServiceImpl lecturerService;
+    private final GroupServiceImpl groupService;
+    private final ClassroomServiceImpl classroomService;
+    private final ClassTimeServiceImpl classTimeService;
 
     private MainController(
-            RecordService recordService,
-            DisciplineService disciplineService,
-            LecturerService lecturerService,
-            GroupService groupService,
-            ClassroomService classroomService, ClassTimeService classTimeService) {
+            RecordServiceImpl recordService,
+            DisciplineServiceImpl disciplineService,
+            LecturerServiceImpl lecturerService,
+            GroupServiceImpl groupService,
+            ClassroomServiceImpl classroomService, ClassTimeServiceImpl classTimeService) {
         this.recordService = recordService;
         this.disciplineService = disciplineService;
         this.lecturerService = lecturerService;
