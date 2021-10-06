@@ -3,9 +3,12 @@ package com.example.kma_schedule.controller;
 
 import com.example.kma_schedule.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/")
 public class MainController {
 
     private final RecordServiceImpl recordService;
@@ -27,5 +30,10 @@ public class MainController {
         this.groupService = groupService;
         this.classroomService = classroomService;
         this.classTimeService = classTimeService;
+    }
+
+    @GetMapping
+    public String getMapping() {
+        return "testing endpoint for unregisted users";
     }
 }

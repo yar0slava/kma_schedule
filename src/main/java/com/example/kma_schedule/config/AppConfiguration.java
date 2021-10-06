@@ -422,17 +422,5 @@ public class AppConfiguration {
             }
         };
     }
-    @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-        return args -> {
 
-            System.out.println("Beans created for SchedulerApplication:");
-
-            String[] beans = ctx.getBeanDefinitionNames();
-            for (String bean : beans) {
-                System.out.println("Bean " + bean + " was created");
-            }
-
-        };
-    }
 }
