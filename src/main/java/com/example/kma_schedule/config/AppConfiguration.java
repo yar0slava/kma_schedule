@@ -2,6 +2,8 @@ package com.example.kma_schedule.config;
 import com.example.kma_schedule.database.entity.*;
 import com.example.kma_schedule.database.entity.Record;
 import com.example.kma_schedule.database.repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +12,11 @@ import java.util.Optional;
 
 @Configuration
 @ComponentScan
+@EnableConfigurationProperties(DatabaseProperties.class)
 public class AppConfiguration {
+
+    @Autowired
+    private DatabaseProperties databaseProperties;
 
     @Bean
     DisciplineRepository disciplineRepository(){
