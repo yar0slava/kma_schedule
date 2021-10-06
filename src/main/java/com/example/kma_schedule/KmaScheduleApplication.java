@@ -1,9 +1,6 @@
 package com.example.kma_schedule;
 
-import com.example.schedulerspringbootstarter.ScheduleServiceImpl;
 import com.example.schedulerspringbootstarter.WebSecurityConfigurer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
