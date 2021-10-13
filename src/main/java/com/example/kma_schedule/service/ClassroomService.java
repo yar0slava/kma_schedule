@@ -9,5 +9,6 @@ public interface ClassroomService {
     Optional<Classroom> getByName(String name);
     void addNewClassroom(Classroom classroom);
     List<Classroom> getAll();
-
+    void deleteById(Integer id);
+    Optional<Classroom> update(Classroom classroom);
 }

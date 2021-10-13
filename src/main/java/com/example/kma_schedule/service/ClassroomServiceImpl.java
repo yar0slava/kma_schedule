@@ -34,4 +34,14 @@ public class ClassroomServiceImpl implements ClassroomService {
     public List<Classroom> getAll() {
         return (List<Classroom>) classroomRepository.findAll();
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        classroomRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Classroom> update(Classroom classroom) {
+        return Optional.of(classroomRepository.save(classroom));
+    }
 }

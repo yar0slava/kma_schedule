@@ -10,4 +10,6 @@ public interface RecordService {
     Optional<Record> getById(Integer id);
     void addNewRecord(Record record);
     List<Record> getAll();
+    void deleteById(Integer id);
+    Optional<Record> update(Record record);
 }

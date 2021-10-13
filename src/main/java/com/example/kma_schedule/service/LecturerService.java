@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public interface LecturerService {
     List<Lecturer> getAll();
-    Optional<Lecturer> getById(int id);
+    Optional<Lecturer> getById(Integer id);
     void addNewLecturer(Lecturer lecturer);
+    void deleteById(Integer id);
+    Optional<Lecturer> update(Lecturer lecturer);
 }

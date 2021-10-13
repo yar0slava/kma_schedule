@@ -28,4 +28,14 @@ public class RecordServiceImpl implements RecordService{
     public List<Record> getAll() {
         return (List<Record>) recordRepository.findAll();
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        recordRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Record> update(Record record) {
+        return Optional.of(recordRepository.save(record));
+    }
 }
