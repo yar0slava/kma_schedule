@@ -2,6 +2,7 @@ package com.example.kma_schedule.service;
 
 import com.example.kma_schedule.database.entity.Record;
 import com.example.kma_schedule.database.repository.RecordRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,12 +11,8 @@ import java.util.Optional;
 @Service
 public class RecordServiceImpl implements RecordService{
 
-    private final RecordRepository recordRepository;
-
-    public RecordServiceImpl(RecordRepository recordRepository) {
-        this.recordRepository = recordRepository;
-    }
-
+    @Autowired
+    private RecordRepository recordRepository;
 
     @Override
     public Optional<Record> getById(Integer id) {
