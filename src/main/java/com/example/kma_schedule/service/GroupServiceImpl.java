@@ -38,4 +38,14 @@ public class GroupServiceImpl implements GroupService {
     public List<Group> findBySpecialization(String specialization) {
         return groupRepository.findBySpecialization(specialization);
     }
+
+    @Override
+    public void deleteById(String id) {
+        groupRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Group> update(Group group) {
+        return Optional.of(groupRepository.save(group));
+    }
 }

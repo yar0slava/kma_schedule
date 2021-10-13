@@ -21,12 +21,22 @@ public class LecturerServiceImpl implements LecturerService {
     }
 
     @Override
-    public Optional<Lecturer> getById(int id) {
+    public Optional<Lecturer> getById(Integer id) {
         return lecturerRepository.findById(id);
     }
 
     @Override
     public void addNewLecturer(Lecturer lecturer) {
         lecturerRepository.save(lecturer);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        lecturerRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Lecturer> update(Lecturer lecturer) {
+        return Optional.of(lecturerRepository.save(lecturer));
     }
 }

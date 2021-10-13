@@ -28,4 +28,14 @@ public class DisciplineServiceImpl implements DisciplineService {
     public List<Discipline> getAll() {
         return (List<Discipline>) disciplineRepository.findAll();
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        disciplineRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Discipline> update(Discipline discipline) {
+        return Optional.of(disciplineRepository.save(discipline));
+    }
 }

@@ -9,4 +9,6 @@ public interface DisciplineService {
     Optional<Discipline> getById(Integer id);
     void addNewDiscipline(Discipline discipline);
     List<Discipline> getAll();
+    void deleteById(Integer id);
+    Optional<Discipline> update(Discipline discipline);
 }
