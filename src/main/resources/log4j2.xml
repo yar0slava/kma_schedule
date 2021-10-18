@@ -8,8 +8,11 @@
     <Appenders>
         <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
             <PatternLayout pattern="${LOG_PATTERN}"/>
+            <MarkerFilter marker="ADMIN" onMatch="ACCEPT"
+                          onMismatch="DENY"/> <!-- Filters by ADMIN marker -->
         </Console>
-        <!-- Rolling File Appender -->
+
+        <!-- File Appender -->
         <RollingFile name="FileAppender" fileName="logs/log4j2-demo.log"
                      filePattern="logs/log4j2-demo-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout>
@@ -22,7 +25,7 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Logger name="com.example.log4j2demo" level="debug" additivity="false">
+        <Logger name="com.example.kma_schedule" level="debug" additivity="false">
             <AppenderRef ref="ConsoleAppender"/>
         </Logger>
 
