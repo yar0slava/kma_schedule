@@ -17,19 +17,6 @@ public class KmaScheduleApplication implements ApplicationRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(KmaScheduleApplication.class, args);
-
-//		ApplicationContext applicationContext = SpringApplication.run(KmaScheduleApplication.class, args);
-
-//		WebSecurityConfigurer webSecurityConfigurer = applicationContext.getBean(WebSecurityConfigurer.class);
-//		String[] adminEnd = webSecurityConfigurer.getAdminEndpoints();
-//		for (String s: adminEnd) {
-//			System.out.println(s);
-//		}
-//		System.out.println("===========");
-//		String[] unsecured = webSecurityConfigurer.getUnsecuredEndpoints();
-//		for (String s: unsecured) {
-//			System.out.println(s);
-//		}
 	}
 
 	@Override
@@ -40,8 +27,8 @@ public class KmaScheduleApplication implements ApplicationRunner {
 		logger.error("Oops! We have an Error. OK");
 		logger.fatal("Damn! Fatal error. Please fix me.");
 
-		logger.info(marker, "ADMIN info");
-		logger.error(marker, "ADMIN Error");
+		logger.info(marker, "ADMIN info logger");
+		logger.error(marker, "ADMIN Error logger");
 	}
 
 }

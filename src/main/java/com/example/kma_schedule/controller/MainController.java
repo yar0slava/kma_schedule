@@ -1,9 +1,11 @@
 package com.example.kma_schedule.controller;
 
 
+import com.example.kma_schedule.database.entity.Record;
 import com.example.kma_schedule.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,4 +38,6 @@ public class MainController {
     public String getMapping() {
         return "testing endpoint for unregisted users";
     }
+
+
 }

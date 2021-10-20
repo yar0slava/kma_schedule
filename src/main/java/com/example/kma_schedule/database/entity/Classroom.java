@@ -21,4 +21,9 @@ public class Classroom {
 
     @Column(name = "capacity")
     private Integer capacity;
+
+    public Classroom(String name, Integer capacity) {
+        this.name=name;
+        this.capacity=capacity;
+    }
 }

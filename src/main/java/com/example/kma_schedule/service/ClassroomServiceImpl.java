@@ -2,6 +2,8 @@ package com.example.kma_schedule.service;
 
 import com.example.kma_schedule.database.entity.Classroom;
 import com.example.kma_schedule.database.repository.ClassroomRepository;
+import com.example.kma_schedule.dto.ClassroomDto;
+import com.example.kma_schedule.mapper.ClassroomMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +14,12 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ClassroomServiceImpl implements ClassroomService {
 
+
     @Autowired
     private ClassroomRepository classroomRepository;
 
+    @Autowired
+    private ClassroomMapper classroomMapper;
     @Override
     public Optional<Classroom> getById(Integer id) {
         return classroomRepository.findById(id);
@@ -26,8 +31,9 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public void addNewClassroom(Classroom classroom) {
-        classroomRepository.save(classroom);
+    public void addNewClassroom(ClassroomDto classroom) {
+        Classroom classroomEntity = classroomMapper.toEntity(classroom);
+        classroomRepository.save(classroomEntity);
     }
 
     @Override
