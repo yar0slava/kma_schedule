@@ -32,14 +32,14 @@ public class DisciplineController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Discipline> getAll(){
+    public List<DisciplineDto> getAll(){
         return disciplineService.getAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Discipline> get(@PathVariable Integer id) throws DisciplineException {
-        Optional<Discipline> disciplinesObj = disciplineService.getById(id);
+    public Optional<DisciplineDto> get(@PathVariable Integer id) throws DisciplineException {
+        Optional<DisciplineDto> disciplinesObj = disciplineService.getById(id);
         if(!disciplinesObj.isPresent()) {
             throw new DisciplineException("Discipline not found for the Id: " + id);
         }
