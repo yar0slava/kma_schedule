@@ -1,23 +1,23 @@
 package com.example.kma_schedule.controller;
 
 import com.example.kma_schedule.database.entity.Discipline;
-import com.example.kma_schedule.exceptions.DisciplineExceptionHandler;
+import com.example.kma_schedule.database.entity.Record;
+import com.example.kma_schedule.dto.DisciplineDto;
+import com.example.kma_schedule.exceptions.DisciplineException;
 import com.example.kma_schedule.service.DisciplineService;
-import com.example.kma_schedule.service.DisciplineServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -30,37 +30,44 @@ public class DisciplineController {
     @Autowired
     private DisciplineService disciplineService;
 
-    @GetMapping("/")
-    public List<Discipline> get(){
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<Discipline> getAll(){
         return disciplineService.getAll();
     }
 
-
     @GetMapping("/{id}")
-    public Optional<Discipline> get(@PathVariable Integer id) {
+    @ResponseStatus(HttpStatus.OK)
+    public Optional<Discipline> get(@PathVariable Integer id) throws DisciplineException {
         Optional<Discipline> disciplinesObj = disciplineService.getById(id);
         if(!disciplinesObj.isPresent()) {
-            throw new RuntimeException("Discipline not found for the Id: "+id);
+            throw new DisciplineException("Discipline not found for the Id: " + id);
         }
         return disciplinesObj;
     }
 
-    @PostMapping("/")
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable Integer id){
+        disciplineService.deleteById(id);
+    }
+
+    @PutMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@Valid @RequestBody DisciplineDto discipline) {
+        disciplineService.update(discipline);
+    }
+
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createNewDiscipline(@Valid Discipline discipline) {
+    public void createNewDiscipline(@Valid @RequestBody DisciplineDto discipline) {
         disciplineService.addNewDiscipline(discipline);
     }
 
     //exception handler for discipline controller
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(DisciplineExceptionHandler.class)
-//    public Map<String, String> handleValidationExceptions(DisciplineExceptionHandler ex) {
-//        Map<String, String> errors = new HashMap<>();
-//        ex.getBindingResult().getAllErrors().forEach((error) -> {
-//            String fieldName = ((FieldError) error).getField();
-//            String errorMessage = error.getDefaultMessage();
-//            errors.put(fieldName, errorMessage);
-//        });
-//        return errors;
-//    }
+    @ExceptionHandler(DisciplineException.class)
+    public ResponseEntity<Object> handleValidationExceptions(
+            DisciplineException exception, WebRequest request) {
+        return new ResponseEntity<Object>(exception.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND);
+    }
 }
