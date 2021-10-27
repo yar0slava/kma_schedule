@@ -10,11 +10,14 @@ import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -25,17 +28,15 @@ public class DisciplineController {
     private static final Marker marker = MarkerManager.getMarker("Discipline");
 
     @Autowired
-    private DisciplineServiceImpl disciplineService;
+    private DisciplineService disciplineService;
 
-    @GetMapping("/disciplines")
-    @ResponseBody
+    @GetMapping("/")
     public List<Discipline> get(){
         return disciplineService.getAll();
     }
 
 
-    @GetMapping("/disciplines/{id}")
-    @ResponseBody
+    @GetMapping("/{id}")
     public Optional<Discipline> get(@PathVariable Integer id) {
         Optional<Discipline> disciplinesObj = disciplineService.getById(id);
         if(!disciplinesObj.isPresent()) {
@@ -46,14 +47,15 @@ public class DisciplineController {
 
     @PostMapping("/disciplines")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createNewDiscipline(@Valid @RequestBody Discipline discipline) {
+    public void createNewDiscipline(@Valid Discipline discipline) {
         disciplineService.addNewDiscipline(discipline);
     }
 
     //exception handler for discipline controller
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)
 //    @ExceptionHandler(DisciplineExceptionHandler.class)
-//    public String handleValidationExceptions(MethodArgumentNotValidException ex) {
+//    public Map<String, String> handleValidationExceptions(DisciplineExceptionHandler ex) {
+//        Map<String, String> errors = new HashMap<>();
 //        ex.getBindingResult().getAllErrors().forEach((error) -> {
 //            String fieldName = ((FieldError) error).getField();
 //            String errorMessage = error.getDefaultMessage();
