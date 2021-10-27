@@ -29,9 +29,8 @@ public class Discipline {
     @Size(min = 5, max = 150)
     private String name;
 
-    @ManyToMany
-    @JoinTable(name = "lecturers_teach",
-            joinColumns = @JoinColumn(name = "disciplineId"),
-            inverseJoinColumns = @JoinColumn(name = "lecturerId"))
-    private Set<Lecturer> instructors;
+    @ManyToOne
+    @JoinTable(name = "lecturer_teaches",
+            joinColumns = @JoinColumn(name = "lecturerId"))
+    private Lecturer lecturer;
 }
