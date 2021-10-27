@@ -1,6 +1,6 @@
 package com.example.kma_schedule.controller;
 
-import com.example.kma_schedule.database.entity.Lecturer;
+import com.example.kma_schedule.dto.LecturerDto;
 import com.example.kma_schedule.service.LecturerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,13 +17,13 @@ public class LecturerController {
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<Lecturer> getAll(){
+    public List<LecturerDto> getAll(){
         return lecturerService.getAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Lecturer get(@PathVariable Integer id){
+    public LecturerDto get(@PathVariable Integer id){
         return  lecturerService.getById(id).get();
     }
 
@@ -35,13 +35,13 @@ public class LecturerController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody Lecturer lecturer){
+    public void create(@RequestBody LecturerDto lecturer){
         lecturerService.addNewLecturer(lecturer);
     }
 
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public void update(@RequestBody Lecturer lecturer){
+    public void update(@RequestBody LecturerDto lecturer){
         lecturerService.update(lecturer);
     }
 }
