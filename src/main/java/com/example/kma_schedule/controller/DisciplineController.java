@@ -45,7 +45,7 @@ public class DisciplineController {
         return disciplinesObj;
     }
 
-    @PostMapping("/disciplines")
+    @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public void createNewDiscipline(@Valid Discipline discipline) {
         disciplineService.addNewDiscipline(discipline);
