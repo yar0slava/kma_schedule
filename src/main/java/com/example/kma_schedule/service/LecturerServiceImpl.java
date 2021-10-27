@@ -1,33 +1,41 @@
 package com.example.kma_schedule.service;
 
-import com.example.kma_schedule.database.entity.Lecturer;
 import com.example.kma_schedule.database.repository.LecturerRepository;
+import com.example.kma_schedule.dto.LecturerDto;
+import com.example.kma_schedule.mapper.LecturerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class LecturerServiceImpl implements LecturerService {
 
     @Autowired
     private LecturerRepository lecturerRepository;
+    @Autowired
+    private LecturerMapper lecturerMapper;
 
     @Override
-    public List<Lecturer> getAll() {
-        return (List<Lecturer>) lecturerRepository.findAll();
+    public List<LecturerDto> getAll() {
+        return StreamSupport.stream(
+                        lecturerRepository.findAll().spliterator(), false )
+                .map(lecturerMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<Lecturer> getById(Integer id) {
-        return lecturerRepository.findById(id);
+    public Optional<LecturerDto> getById(Integer id) {
+        return Optional.of(lecturerMapper.toDto(lecturerRepository.findById(id).get()));
     }
 
     @Override
-    public void addNewLecturer(Lecturer lecturer) {
-        lecturerRepository.save(lecturer);
+    public void addNewLecturer(LecturerDto lecturer) {
+        lecturerRepository.save(lecturerMapper.toEntity(lecturer));
     }
 
     @Override
@@ -36,7 +44,7 @@ public class LecturerServiceImpl implements LecturerService {
     }
 
     @Override
-    public Optional<Lecturer> update(Lecturer lecturer) {
-        return Optional.of(lecturerRepository.save(lecturer));
+    public Optional<LecturerDto> update(LecturerDto lecturer) {
+        return Optional.of(lecturerMapper.toDto(lecturerRepository.save(lecturerMapper.toEntity(lecturer))));
     }
 }
