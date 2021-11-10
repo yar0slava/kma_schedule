@@ -22,7 +22,6 @@ public class Lecturer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     @NotBlank(message = "ID is mandatory")
-    @Size(min = 6, max = 6)
     private Integer lecturerId;
 
     @Column
