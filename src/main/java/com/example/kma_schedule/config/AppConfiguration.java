@@ -2,6 +2,8 @@ package com.example.kma_schedule.config;
 import com.example.kma_schedule.database.entity.*;
 import com.example.kma_schedule.database.entity.Record;
 import com.example.kma_schedule.database.repository.*;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +19,19 @@ public class AppConfiguration {
 
     @Autowired
     private DatabaseProperties databaseProperties;
+
+    @Bean
+    public ModelMapper modelMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.STRICT)
+                .setFieldMatchingEnabled(true)
+                .setSkipNullEnabled(true)
+                .setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PRIVATE);
+        return modelMapper;
+
+    }
+
 
     @Bean
     DisciplineRepository disciplineRepository(){

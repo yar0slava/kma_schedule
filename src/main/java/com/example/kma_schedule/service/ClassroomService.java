@@ -1,13 +1,16 @@
 package com.example.kma_schedule.service;
 
 import com.example.kma_schedule.database.entity.Classroom;
+import com.example.kma_schedule.dto.ClassroomDto;
+
 import java.util.List;
 import java.util.Optional;
 
 public interface ClassroomService {
     Optional<Classroom> getById(Integer id);
     Optional<Classroom> getByName(String name);
-    void addNewClassroom(Classroom classroom);
+    void addNewClassroom(ClassroomDto classroom);
     List<Classroom> getAll();
-
+    void deleteById(Integer id);
+    Optional<Classroom> update(Classroom classroom);
 }

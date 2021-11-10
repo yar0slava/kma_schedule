@@ -29,4 +29,14 @@ public class ClassTimeServiceImpl implements ClassTimeService {
         return (List<ClassTime>) classTimeRepository.findAll();
     }
 
+    @Override
+    public void deleteById(Integer id) {
+        classTimeRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<ClassTime> update(ClassTime classTime) {
+        return Optional.of(classTimeRepository.save(classTime));
+    }
+
 }

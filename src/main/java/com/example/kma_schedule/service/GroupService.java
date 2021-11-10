@@ -11,4 +11,6 @@ public interface GroupService {
     void addNewGroup(Group group);
     List<Group> findByDegree(String degree);
     List<Group> findBySpecialization(String specialization);
+    void deleteById(String id);
+    Optional<Group> update(Group group);
 }

@@ -3,7 +3,8 @@ package com.example.kma_schedule.database.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Set;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -18,14 +19,17 @@ public class Discipline {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotBlank(message = "Discipline ID is mandatory")
+    @Size(min = 6, max = 6)
     private Integer disciplineId;
 
     @Column
+    @NotBlank(message = "Discipline name is mandatory")
+    @Size(min = 5, max = 150)
     private String name;
 
-    @ManyToMany
-    @JoinTable(name = "lecturers_teach",
-            joinColumns = @JoinColumn(name = "disciplineId"),
-            inverseJoinColumns = @JoinColumn(name = "lecturerId"))
-    private Set<Lecturer> instructors;
+    @ManyToOne
+    @JoinTable(name = "lecturer_teaches",
+            joinColumns = @JoinColumn(name = "lecturerId"))
+    private Lecturer lecturer;
 }
