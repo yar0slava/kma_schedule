@@ -1,0 +1,13 @@
+2021-11-10 20:00:04.879  INFO DESKTOP-9MAQKVR --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.2.0.Final
+2021-11-10 20:00:07.179  INFO DESKTOP-9MAQKVR --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8000 (http)
+2021-11-10 20:00:07.213  INFO DESKTOP-9MAQKVR --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8000"]
+2021-11-10 20:00:07.214  INFO DESKTOP-9MAQKVR --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2021-11-10 20:00:07.216  INFO DESKTOP-9MAQKVR --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-11-10 20:00:07.380  INFO DESKTOP-9MAQKVR --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2021-11-10 20:00:07.380  INFO DESKTOP-9MAQKVR --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2297 ms
+2021-11-10 20:00:09.153  INFO DESKTOP-9MAQKVR --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8000"]
+2021-11-10 20:00:09.187  INFO DESKTOP-9MAQKVR --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8000 (http) with context path ''
+2021-11-10 20:00:51.244  INFO DESKTOP-9MAQKVR --- [nio-8000-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-10 20:00:51.244  INFO DESKTOP-9MAQKVR --- [nio-8000-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2021-11-10 20:00:51.246  INFO DESKTOP-9MAQKVR --- [nio-8000-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 1 ms
+2021-11-10 20:00:51.919  INFO DESKTOP-9MAQKVR --- [nio-8000-exec-1] o.s.a.AbstractOpenApiResource            : Init duration for springdoc-openapi is: 635 ms
