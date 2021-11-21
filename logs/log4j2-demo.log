@@ -1,0 +1,30 @@
+2021-10-27 22:20:18.079  INFO LAPTOP-LGKN1RA1 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.2.0.Final
+2021-10-27 22:20:19.434  INFO LAPTOP-LGKN1RA1 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8000 (http)
+2021-10-27 22:20:19.460  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8000"]
+2021-10-27 22:20:19.460  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2021-10-27 22:20:19.473  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-10-27 22:20:19.660  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2021-10-27 22:20:19.660  INFO LAPTOP-LGKN1RA1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1519 ms
+2021-10-27 22:20:20.293  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8000"]
+2021-10-27 22:20:20.350  INFO LAPTOP-LGKN1RA1 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8000 (http) with context path ''
+2021-10-27 22:20:44.282  INFO LAPTOP-LGKN1RA1 --- [nio-8000-exec-6] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-27 22:20:44.282  INFO LAPTOP-LGKN1RA1 --- [nio-8000-exec-6] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2021-10-27 22:20:44.282  INFO LAPTOP-LGKN1RA1 --- [nio-8000-exec-6] o.s.w.s.DispatcherServlet                : Completed initialization in 0 ms
+2021-11-21 10:36:54.755  INFO LAPTOP-LGKN1RA1 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.2.0.Final
+2021-11-21 10:36:56.379  INFO LAPTOP-LGKN1RA1 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8000 (http)
+2021-11-21 10:36:56.399  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8000"]
+2021-11-21 10:36:56.400  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2021-11-21 10:36:56.400  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-11-21 10:36:56.551  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2021-11-21 10:36:56.551  INFO LAPTOP-LGKN1RA1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1713 ms
+2021-11-21 10:36:57.042  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8000"]
+2021-11-21 10:36:57.079  INFO LAPTOP-LGKN1RA1 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8000 (http) with context path ''
+2021-11-21 11:04:23.100  INFO LAPTOP-LGKN1RA1 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.2.0.Final
+2021-11-21 11:04:24.216  INFO LAPTOP-LGKN1RA1 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8000 (http)
+2021-11-21 11:04:24.231  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8000"]
+2021-11-21 11:04:24.231  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2021-11-21 11:04:24.232  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-11-21 11:04:24.330  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2021-11-21 11:04:24.330  INFO LAPTOP-LGKN1RA1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1164 ms
+2021-11-21 11:04:24.789  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8000"]
+2021-11-21 11:04:24.835  INFO LAPTOP-LGKN1RA1 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8000 (http) with context path ''
