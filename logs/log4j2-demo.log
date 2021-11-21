@@ -740,3 +740,32 @@ java.util.NoSuchElementException: No value present
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-11-21 11:10:14.277  INFO LAPTOP-LGKN1RA1 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.2.0.Final
+2021-11-21 11:10:15.622  INFO LAPTOP-LGKN1RA1 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@3ee0b4f7' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-21 11:10:15.629  INFO LAPTOP-LGKN1RA1 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-21 11:10:15.848  INFO LAPTOP-LGKN1RA1 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8000 (http)
+2021-11-21 11:10:15.873  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8000"]
+2021-11-21 11:10:15.874  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2021-11-21 11:10:15.874  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-11-21 11:10:16.149  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2021-11-21 11:10:16.149  INFO LAPTOP-LGKN1RA1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1824 ms
+2021-11-21 11:10:16.325  WARN LAPTOP-LGKN1RA1 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webSecurityConfig' defined in file [C:\Users\iryna\kma_schedule\target\classes\com\example\kma_schedule\config\WebSecurityConfig.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.kma_schedule.service.UserServiceImpl' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2021-11-21 11:10:16.330  INFO LAPTOP-LGKN1RA1 --- [           main] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2021-11-21 11:10:16.360  INFO LAPTOP-LGKN1RA1 --- [           main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-11-21 11:10:16.401 ERROR LAPTOP-LGKN1RA1 --- [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.example.kma_schedule.config.WebSecurityConfig required a bean of type 'com.example.kma_schedule.service.UserServiceImpl' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.example.kma_schedule.service.UserServiceImpl' in your configuration.
+
