@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name="group")
+@Table(name = "stud_group")
 public class Group {
 
     @Id
