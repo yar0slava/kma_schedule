@@ -1,6 +1,0 @@
-DROP TABLE IF EXISTS classroom;
-DROP TABLE IF EXISTS classtime;
-DROP TABLE IF EXISTS disciplines;
-DROP TABLE IF EXISTS stud_group;
-DROP TABLE IF EXISTS lecturer;
-DROP TABLE IF EXISTS record;

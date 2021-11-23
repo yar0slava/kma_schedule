@@ -1,7 +1,5 @@
 package com.example.kma_schedule.controller;
 
-import com.example.kma_schedule.database.entity.Discipline;
-import com.example.kma_schedule.database.entity.Record;
 import com.example.kma_schedule.dto.DisciplineDto;
 import com.example.kma_schedule.exceptions.DisciplineException;
 import com.example.kma_schedule.service.DisciplineService;
