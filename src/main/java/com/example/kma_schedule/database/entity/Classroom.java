@@ -1,5 +1,7 @@
 package com.example.kma_schedule.database.entity;
+
 import lombok.*;
+
 import javax.persistence.*;
 
 @Getter
