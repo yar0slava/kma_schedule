@@ -5,6 +5,7 @@ import com.example.kma_schedule.service.UserServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,69 +30,90 @@ import static org.springframework.http.HttpMethod.POST;
 @EnableGlobalMethodSecurity(jsr250Enabled = true, prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserServiceImpl userService;
+
     private final ObjectMapper objectMapper;
     private final JwtTokenGenerator jwtTokenGenerator;
 
+    @Autowired
+    private UserServiceImpl userService;
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http
                 .headers().frameOptions().disable().and()
                 .csrf().disable()
                 .authorizeRequests()
-//                .antMatchers(HttpMethod.GET, "/profile").authenticated()
-//                .antMatchers(HttpMethod.GET, "/reception/**").authenticated()
-                .anyRequest().permitAll()
+                .antMatchers("/sign-up").not().fullyAuthenticated()
+                .antMatchers("/records").hasAnyRole("USER","ADMIN")
+                .antMatchers("/lectors","/group", "/classtime", "/classroom", "/disciplines").hasRole("ADMIN")
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
                 .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .addFilter(logoutFilter())
-                .addFilterBefore(customLoginFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(new AuthenticationFilter(userDetailsService(), jwtTokenGenerator), CustomLoginFilter.class);
+                .formLogin()
+                .loginPage("/sign-in")
+                .permitAll();
+
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
+
+//
+//        http
+//                .csrf().disable()
+//                .authorizeRequests()
+//                .antMatchers("/sign-up").not().fullyAuthenticated()
+//                .antMatchers("/lectors", "/group", "/classtime", "/classroom", "/disciplines").hasRole("ADMIN")
+//                .antMatchers("/records").permitAll()
+//
+//                .antMatchers("/css/**").permitAll()
+//                .anyRequest().permitAll()
+//                .and()
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and()
+//                .addFilter(logoutFilter())
+//                .addFilterBefore(customLoginFilter(), UsernamePasswordAuthenticationFilter.class)
+//                .addFilterBefore(new AuthenticationFilter(userDetailsService(), jwtTokenGenerator), CustomLoginFilter.class);
 
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
-        authManagerBuilder
-//                .authenticationProvider(activeDirectoryLdapAuthenticationProvider())
-                .userDetailsService(userDetailsService());
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
+//        authManagerBuilder
+////                .authenticationProvider(activeDirectoryLdapAuthenticationProvider())
+//                .userDetailsService(userDetailsService());
+//
+//        authManagerBuilder
+////                .authenticationProvider(databaseAuthenticationProvider())
+//                .userDetailsService(userDetailsService());
+//    }
 
-        authManagerBuilder
-//                .authenticationProvider(databaseAuthenticationProvider())
-                .userDetailsService(userDetailsService());
+    @Autowired
+    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
 
-    @Bean
-    @Override
-    protected UserDetailsService userDetailsService() {
-        return userService;
-    }
-
-    @Bean
-    @SneakyThrows
-    @Override
-    public AuthenticationManager authenticationManagerBean() {
-        return super.authenticationManagerBean();
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
-    private CustomLoginFilter customLoginFilter() {
-        final CustomLoginFilter customLoginFilter =  new CustomLoginFilter(authenticationManagerBean(), objectMapper, jwtTokenGenerator);
-        customLoginFilter.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/login", POST.name()));
-
-        return customLoginFilter;
-    }
-
-    private LogoutFilter logoutFilter() {
-        final LogoutHandler[] logoutHandlers = new LogoutHandler[] {
-                new SecurityContextLogoutHandler()
-        };
-
-        return new LogoutFilter(new LogoutSuccessHandlerAdapter(), logoutHandlers);
-    }
+//    @Bean
+//    @SneakyThrows
+//    @Override
+//    public AuthenticationManager authenticationManagerBean() {
+//        return super.authenticationManagerBean();
+//    }
+//
+//
+//    private CustomLoginFilter customLoginFilter() {
+//        final CustomLoginFilter customLoginFilter =  new CustomLoginFilter(authenticationManagerBean(), objectMapper, jwtTokenGenerator);
+//        customLoginFilter.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/login", POST.name()));
+//
+//        return customLoginFilter;
+//    }
+//
+//    private LogoutFilter logoutFilter() {
+//        final LogoutHandler[] logoutHandlers = new LogoutHandler[] {
+//                new SecurityContextLogoutHandler()
+//        };
+//
+//        return new LogoutFilter(new LogoutSuccessHandlerAdapter(), logoutHandlers);
+//    }
 }
