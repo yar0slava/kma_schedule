@@ -1,27 +1,16 @@
 package com.example.kma_schedule;
 
-//import com.example.schedulerspringbootstarter.WebSecurityConfigurer;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+
+@SpringBootApplication
+@EnableJpaRepositories
 public class KmaScheduleApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(KmaScheduleApplication.class, args);
-
-//		WebSecurityConfigurer webSecurityConfigurer = applicationContext.getBean(WebSecurityConfigurer.class);
-//		String[] adminEnd = webSecurityConfigurer.getAdminEndpoints();
-//		for (String s: adminEnd) {
-//			System.out.println(s);
-//		}
-//		System.out.println("===========");
-//		String[] unsecured = webSecurityConfigurer.getUnsecuredEndpoints();
-//		for (String s: unsecured) {
-//			System.out.println(s);
-//		}
 	}
 
 }

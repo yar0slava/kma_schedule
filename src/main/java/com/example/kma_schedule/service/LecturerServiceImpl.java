@@ -4,7 +4,6 @@ import com.example.kma_schedule.database.repository.LecturerRepository;
 import com.example.kma_schedule.dto.LecturerDto;
 import com.example.kma_schedule.mapper.LecturerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 
 import java.util.List;
