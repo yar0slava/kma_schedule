@@ -17,11 +17,17 @@ public class Lecturer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    @NotBlank(message = "ID is mandatory")
     private Integer lecturerId;
 
     @Column
-    @NotBlank(message = "Lecturer full name is mandatory")
+    @NotBlank(message = "Lecturer name is mandatory")
     private String name;
+
+    @Column
+    @NotBlank(message = "Lecturer surname is mandatory")
+    private String surname;
+
+    @Column
+    @NotBlank(message = "Lecturer middlename is mandatory")
+    private String middlename;
 }

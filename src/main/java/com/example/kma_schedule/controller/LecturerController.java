@@ -4,11 +4,12 @@ import com.example.kma_schedule.dto.LecturerDto;
 import com.example.kma_schedule.service.LecturerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/lectors")
 public class LecturerController {
 
@@ -17,8 +18,8 @@ public class LecturerController {
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<LecturerDto> getAll(){
-        return lecturerService.getAll();
+    public String getAddLectorPage(){
+            return "add-lecturer";
     }
 
     @GetMapping("/{id}")
