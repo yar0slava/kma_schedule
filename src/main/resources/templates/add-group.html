@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <title>Додати групу</title>
@@ -59,14 +59,27 @@
                 <h6>Курс</h6>
                 <input required type="number" name="course" class="form-control" id="course">
             </div>
-            <div class="form-group">
-                <h6>Лекція</h6>
-                <input required type="checkbox" name="isLecture" class="form-control" id="isLecture">
+
+            <div class="form-check">
+                <input required class="form-check-input" type="checkbox" value=""  name="isLecture" id="isLecture">
+                <label class="form-check-label" for="isLecture">
+                    Лекційне заняття
+                </label>
             </div>
+
             <div class="form-group">
                 <h6>Номер групи</h6>
-                <input required type="number" name="groupNumber" class="form-control" id="groupNumber">
+                <input type="number" name="groupNumber" class="form-control" id="groupNumber">
             </div>
+            <div class="form-group">
+                <h6>Викладач</h6>
+                <select  class="form-select" id="list-lect">
+                    <div th:each="lector: ${lectors}">
+                    <option th:value="${lector.getSurname}+' '+${lector.getName()}+' '+ ${lector.getMiddlename()}" th:text="${lector.getSurname}+' '+${lector.getName()}+' '+ ${lector.getMiddlename()}"></option>
+                    </div>
+                </select>
+            </div>
+
             <div class="form-row text-center mt-4">
                 <button  class="btn btn-outline-dark btn-block" role="button" id="addButton" type="button" aria-disabled="true">Додати</button>
             </div>
@@ -75,6 +88,6 @@
     <div class="col-3"></div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="/js/main.js"></script>
+<script src="/js/add-group.js"></script>
 </body>
 </html>

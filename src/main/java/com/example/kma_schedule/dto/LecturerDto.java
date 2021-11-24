@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 public class LecturerDto {
 
-    private Integer lecturerId;
     private String name;
+    private String surname;
+    private String middlename;
 }

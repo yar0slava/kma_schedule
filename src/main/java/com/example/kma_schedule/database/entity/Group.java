@@ -15,20 +15,23 @@ import javax.persistence.*;
 public class Group {
 
     @Id
-    @Column
-    private String groupId; //КН_МП1 КН_МП2, ід кожної групи предмету для практики, для лекції ід=L
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
 
     @Column
     private Boolean isLecture;
-
-    @Column
-    private Integer amount; //amount of students in group
 
     @Column
     private String specialization; //Computer Science, Software Engineer, ..
 
     @Column
     private String degree; //Bachelor, Master
+
+    @Column
+    private Integer course;
+
+    @Column
+    private Integer groupNumber;
 
     @ManyToOne
     @JoinColumn(name = "lecturerId")

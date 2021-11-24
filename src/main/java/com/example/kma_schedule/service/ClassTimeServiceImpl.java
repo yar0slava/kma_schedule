@@ -2,6 +2,9 @@ package com.example.kma_schedule.service;
 
 import com.example.kma_schedule.database.entity.ClassTime;
 import com.example.kma_schedule.database.repository.ClassTimeRepository;
+import com.example.kma_schedule.dto.ClassTimeDto;
+import com.example.kma_schedule.mapper.ClassTimeMapper;
+import com.example.kma_schedule.mapper.LecturerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,8 @@ public class ClassTimeServiceImpl implements ClassTimeService {
 
     @Autowired
     private ClassTimeRepository classTimeRepository;
+    @Autowired
+    private ClassTimeMapper classTimeMapper;
 
     @Override
     public Optional<ClassTime> getById(Integer id) {
@@ -20,8 +25,8 @@ public class ClassTimeServiceImpl implements ClassTimeService {
     }
 
     @Override
-    public void addNewClassTime(ClassTime classTime) {
-        classTimeRepository.save(classTime);
+    public void addNewClassTime(ClassTimeDto classTime) {
+        classTimeRepository.save(classTimeMapper.toEntity(classTime));
     }
 
     @Override

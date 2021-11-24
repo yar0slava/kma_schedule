@@ -1,7 +1,10 @@
 package com.example.kma_schedule.service;
 
+import com.example.kma_schedule.database.entity.Discipline;
 import com.example.kma_schedule.database.entity.Group;
 import com.example.kma_schedule.database.repository.GroupRepository;
+import com.example.kma_schedule.dto.GroupDto;
+import com.example.kma_schedule.mapper.GroupMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,9 @@ public class GroupServiceImpl implements GroupService {
     @Autowired
     private GroupRepository groupRepository;
 
+    @Autowired
+    private GroupMapper groupMapper;
+
     @Override
     public List<Group> getAll() {
         return (List<Group>) groupRepository.findAll();
@@ -25,8 +31,9 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void addNewGroup(Group group) {
-        groupRepository.save(group);
+    public void addNewGroup(GroupDto group) {
+        Group group1 = groupMapper.toEntity(group);
+        groupRepository.save(group1);
     }
 
     @Override

@@ -32,7 +32,7 @@ public class AdminController {
     @ResponseStatus(HttpStatus.CREATED)
     public void createNewClassroom(@RequestBody ClassroomDto classroomDto) {
         classroomService.addNewClassroom(classroomDto);
-        MDC.put("admin.login",classroomDto.getAdminLogin());
+        //MDC.put("admin.login",classroomDto.getAdminLogin());
         MDC.put("classroom.name", classroomDto.getName());
         MDC.put("classroom.capacity", classroomDto.getCapacity());
         logger.info(marker, "{} created a new classroom in scheduler with name {} and capacity {}", MDC.get("admin.login"), MDC.get("classroom.name"), MDC.get("classroom.capacity"));
