@@ -5,7 +5,7 @@ $(document).ready(function () {
         ev.preventDefault();
 
         let user = {
-            username: $("#username").val(),
+            email: $("#email").val(),
             password: $("#password").val()
         }
 
