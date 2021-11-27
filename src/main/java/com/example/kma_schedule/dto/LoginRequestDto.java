@@ -5,14 +5,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class LoginDto {
-    String username;
+public class LoginRequestDto {
+    String email;
     String password;
 
     @Override
     public String toString() {
         return "LoginDto{" +
-                "username='" + username + '\'' +
+                "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

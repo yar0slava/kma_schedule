@@ -4,12 +4,14 @@ import com.example.kma_schedule.database.entity.Role;
 import com.example.kma_schedule.database.entity.User;
 import com.example.kma_schedule.database.repository.RoleRepository;
 import com.example.kma_schedule.database.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,25 +25,26 @@ public class UserServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @EventListener
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        roleRepository.save(Role.builder().id(1L).name("ROLE_USER").build());
-        roleRepository.save(Role.builder().id(2L).name("ROLE_ADMIN").build());
+        roleRepository.save(Role.builder().id(1L).name("USER").build());
+        roleRepository.save(Role.builder().id(2L).name("ADMIN").build());
     }
 
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
+                           PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Optional<User> foundUser = userRepository.findUserByUsernameIgnoreCase(s);
+        Optional<User> foundUser = userRepository.findUserByEmailIgnoreCase(s);
         if (!foundUser.isPresent()) {
             throw new UsernameNotFoundException("USER NOT FOUND");
         }
@@ -61,7 +64,8 @@ public class UserServiceImpl implements UserDetailsService {
         if (usrByMail.isPresent()) {
             errors.add("Mail is taken. Try again");
         }
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        user.setPassword(user.getPassword());
         user.setRoles(Collections.singleton(new Role(1L, "USER")));
         if(errors.isEmpty()){
             userRepository.save(user);
@@ -69,22 +73,22 @@ public class UserServiceImpl implements UserDetailsService {
         return errors;
     }
 
-
-    public List<String> login(String username, String password) {
-        List<String> errors = new ArrayList<>();
-        Optional<User> foundUser = userRepository.findUserByUsernameIgnoreCase(username);
-        if (!foundUser.isPresent()) {
-            errors.add("Such username doesn't exist");
-        }else {
-            if(!bCryptPasswordEncoder.matches(password,foundUser.get().getPassword())){
-                errors.add("Password is incorrect");
-            }
-        }
-        return errors;
-    }
-
-
-    public Optional<User> findUserByUsername(String username) {
-        return userRepository.findUserByUsernameIgnoreCase(username);
-    }
+//
+//    public List<String> login(String username, String password) {
+//        List<String> errors = new ArrayList<>();
+//        Optional<User> foundUser = userRepository.findUserByUsernameIgnoreCase(username);
+//        if (!foundUser.isPresent()) {
+//            errors.add("Such username doesn't exist");
+//        }else {
+//            if(!bCryptPasswordEncoder.matches(password,foundUser.get().getPassword())){
+//                errors.add("Password is incorrect");
+//            }
+//        }
+//        return errors;
+//    }
+//
+//
+//    public Optional<User> findUserByUsername(String username) {
+//        return userRepository.findUserByUsernameIgnoreCase(username);
+//    }
 }
