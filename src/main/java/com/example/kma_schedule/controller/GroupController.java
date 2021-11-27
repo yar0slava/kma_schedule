@@ -1,8 +1,6 @@
 package com.example.kma_schedule.controller;
 
-import com.example.kma_schedule.dto.DisciplineDto;
 import com.example.kma_schedule.dto.GroupDto;
-import com.example.kma_schedule.service.ClassTimeService;
 import com.example.kma_schedule.service.GroupService;
 import com.example.kma_schedule.service.LecturerService;
 import org.springframework.beans.factory.annotation.Autowired;

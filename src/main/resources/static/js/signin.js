@@ -5,7 +5,7 @@ $(document).ready(function () {
         ev.preventDefault();
 
         let user = {
-            email: $("#email").val(),
+            username: $("#username").val(),
             password: $("#password").val()
         }
 
@@ -13,7 +13,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: '/login',
+            url: '/sign-in',
             dataType: 'json',
             data: JSON.stringify(user),
             beforeSend: function (xhr) {
@@ -28,7 +28,7 @@ $(document).ready(function () {
 
             },
             error: function (response, status, xhr) {
-                alert("Incorrect login or password");
+                alert("Incorrect username or password", xhr.responseJSON);
             }
         })
     }
