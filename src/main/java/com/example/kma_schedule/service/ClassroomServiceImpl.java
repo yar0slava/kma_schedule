@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @RequiredArgsConstructor
@@ -22,13 +24,13 @@ public class ClassroomServiceImpl implements ClassroomService {
     private ClassroomMapper classroomMapper;
 
     @Override
-    public Optional<Classroom> getById(Integer id) {
-        return classroomRepository.findById(id);
+    public Optional<ClassroomDto> getById(Integer id) {
+        return Optional.of(classroomMapper.toDto(classroomRepository.findById(id).get()));
     }
 
     @Override
-    public Optional<Classroom> getByName(String name) {
-        return classroomRepository.findByName(name);
+    public Optional<ClassroomDto> getByName(String name) {
+        return Optional.of(classroomMapper.toDto(classroomRepository.findByName(name).get()));
     }
 
     @Override
@@ -38,9 +40,11 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public List<Classroom> getAll() {
-        return (List<Classroom>) classroomRepository.findAll();
-    }
+    public List<ClassroomDto> getAll() {
+        return StreamSupport.stream(
+                        classroomRepository.findAll().spliterator(), false )
+                .map(classroomMapper::toDto)
+                .collect(Collectors.toList());    }
 
     @Override
     public void deleteById(Integer id) {
@@ -48,7 +52,7 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public Optional<Classroom> update(Classroom classroom) {
-        return Optional.of(classroomRepository.save(classroom));
+    public Optional<ClassroomDto> update(ClassroomDto classroom) {
+        return Optional.of(classroomMapper.toDto(classroomRepository.save(classroomMapper.toEntity(classroom))));
     }
 }

@@ -52,6 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .addFilterBefore(customLoginFilter(), UsernamePasswordAuthenticationFilter.class)
 //                .addFilterBefore(new AuthenticationFilter(userDetailsService(), jwtTokenGenerator), CustomLoginFilter.class);
 
+
     }
 //
 //    @Override

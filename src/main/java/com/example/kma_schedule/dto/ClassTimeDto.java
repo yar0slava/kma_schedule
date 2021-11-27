@@ -9,6 +9,7 @@ import java.time.LocalTime;
 @Setter
 public class ClassTimeDto {
 
+    private Integer classTimeId;
     private LocalDate classDate;
     private LocalTime classTime;
     private Integer weekNumber;
