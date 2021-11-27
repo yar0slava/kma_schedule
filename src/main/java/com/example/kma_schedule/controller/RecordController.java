@@ -11,27 +11,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.ui.Model;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/records")
 public class RecordController {
 
-    private static final Logger logger = LogManager.getLogger(DisciplineController.class);
-    private static final Marker marker = MarkerManager.getMarker("Discipline");
+    private static final Logger logger = LogManager.getLogger(RecordController.class);
+    private static final Marker marker = MarkerManager.getMarker("Record");
 
     @Autowired
     private RecordService recordService;
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<Record> getAll(){
-        return recordService.getAll();
+    public String getAll(Model model){
+        model.addAttribute("records", recordService.getAll());
+        return "records";
     }
 
     @GetMapping("/{id}")

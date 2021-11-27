@@ -277,6 +277,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http
+                .headers().frameOptions().disable().and()
                 .csrf().disable()
                 .authorizeRequests()
 //                .antMatchers(HttpMethod.GET, "/profile").authenticated()
