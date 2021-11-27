@@ -11,7 +11,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,19 +44,6 @@ public class UserController {
         return "signup";
     }
 
-//    @PostMapping("/sign-in")
-//    public String postSignIn(@ModelAttribute LoginDto user, Model model) {
-//        System.out.println("USERRR");
-//        System.out.println(user.toString());
-//        List<String> errors = userService.login(user.getUsername(),user.getPassword());
-//        System.out.println("Errors\n" + Arrays.toString(errors.toArray()));
-//
-//        if(errors.isEmpty()){
-//            return "redirect:/records";
-//        }
-//        model.addAttribute("err", errors.get(0));
-//        return "login";
-//    }
     @ResponseBody
     @PostMapping(value = "/sign-in")
     @ResponseStatus(HttpStatus.OK)

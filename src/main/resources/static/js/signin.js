@@ -21,7 +21,6 @@ $(document).ready(function () {
             },
             success: function (response, status, xhr) {
                 console.log(xhr.responseJSON);
-                // localStorage.setItem("token", xhr.getResponseHeader("Authorization"));
                 localStorage.setItem("token", xhr.responseJSON.token);
                 window.location = '/records';
             },
@@ -30,8 +29,5 @@ $(document).ready(function () {
             }
         })
     }
-
-    //
-
 
 });
