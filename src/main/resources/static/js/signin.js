@@ -24,8 +24,6 @@ $(document).ready(function () {
                 // localStorage.setItem("token", xhr.getResponseHeader("Authorization"));
                 localStorage.setItem("token", xhr.responseJSON.token);
                 window.location = '/records';
-                // getMain();
-
             },
             error: function (response, status, xhr) {
                 alert("Incorrect username or password", xhr.responseJSON);
@@ -34,28 +32,6 @@ $(document).ready(function () {
     }
 
     //
-    // function getMain(){
-    //         $.ajax({
-    //             type: 'GET',
-    //             url: '/main',
-    //             dataType: 'json',
-    //             beforeSend: function (xhr) {
-    //                 xhr.setRequestHeader('Content-Type', 'application/json')
-    //             },
-    //             success: function (res) {
-    //                 console.log(res);
-    //
-    //                 $('#hospitalss').html(searchResults(res)).then(
-    //                     window.location = '/main-render'
-    //                 );
-    //
-    //
-    //
-    //             },
-    //             error: function (response) {
-    //                 console.log(response);
-    //             }
-    //         })
-    // }
+
 
 });

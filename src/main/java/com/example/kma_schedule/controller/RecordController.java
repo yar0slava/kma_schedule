@@ -17,6 +17,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.ui.Model;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -34,6 +35,14 @@ public class RecordController {
     public String getAll(Model model){
         model.addAttribute("records", recordService.getAll());
         return "records";
+    }
+
+    @GetMapping("/all")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<Record> getAll(){
+        System.out.println("HERE RECORDS");
+        return recordService.getAll();
     }
 
     @GetMapping("/{id}")

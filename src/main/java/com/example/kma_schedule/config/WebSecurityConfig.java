@@ -295,14 +295,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/sign-up").not().fullyAuthenticated()
-                .antMatchers("/records").hasAnyRole("USER", "ADMIN")
+//                .antMatchers("/records").hasAnyRole("USER", "ADMIN")
                 .anyRequest().permitAll()
                 .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .addFilter(logoutFilter())
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//                .and()
+//                .addFilter(logoutFilter())
 //                .addFilterBefore(customLoginFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(new AuthenticationFilter(userDetailsService(), jwtTokenGenerator), CustomLoginFilter.class);
+//                .addFilterBefore(new AuthenticationFilter(userDetailsService(), jwtTokenGenerator), CustomLoginFilter.class);
 
     }
 //
