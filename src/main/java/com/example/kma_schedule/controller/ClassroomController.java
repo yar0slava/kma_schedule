@@ -1,13 +1,13 @@
 package com.example.kma_schedule.controller;
 
 import com.example.kma_schedule.dto.ClassroomDto;
-import com.example.kma_schedule.dto.LecturerDto;
 import com.example.kma_schedule.service.ClassroomService;
-import com.example.kma_schedule.service.LecturerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/classroom")
@@ -18,7 +18,7 @@ public class ClassroomController {
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public String getAddLectorPage(){
+    public String getAddClassroomPage(){
         return "add-classroom";
     }
 
@@ -27,4 +27,32 @@ public class ClassroomController {
     public void create(@RequestBody ClassroomDto classroomDto){
         classroomService.addNewClassroom(classroomDto);
     }
+
+    @GetMapping("/all")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<ClassroomDto> getAll(){
+        return  classroomService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public ClassroomDto get(@PathVariable Integer id){
+        return  classroomService.getById(id).get();
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable Integer id){
+        classroomService.deleteById(id);
+    }
+
+    @PutMapping()
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public ClassroomDto update(@RequestBody ClassroomDto lecturer){
+        return classroomService.update(lecturer).get();
+    }
+
 }
