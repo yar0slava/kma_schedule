@@ -6,6 +6,7 @@ import lombok.Setter;
 @Setter
 public class ClassroomDto {
 
+    private Integer classroomId;
     private String name;
     private Integer capacity;
 }
