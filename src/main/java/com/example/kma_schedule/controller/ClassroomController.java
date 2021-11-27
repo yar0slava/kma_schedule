@@ -51,8 +51,8 @@ public class ClassroomController {
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public ClassroomDto update(@RequestBody ClassroomDto lecturer){
-        return classroomService.update(lecturer).get();
+    public ClassroomDto update(@RequestBody ClassroomDto classroomDto){
+        return classroomService.update(classroomDto).get();
     }
 
 }
