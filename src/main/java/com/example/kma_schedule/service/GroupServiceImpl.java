@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class GroupServiceImpl implements GroupService {
@@ -21,29 +23,39 @@ public class GroupServiceImpl implements GroupService {
     private GroupMapper groupMapper;
 
     @Override
-    public List<Group> getAll() {
-        return (List<Group>) groupRepository.findAll();
+    public List<GroupDto> getAll() {
+        return StreamSupport.stream(
+                        groupRepository.findAll().spliterator(), false )
+                .map(groupMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<Group> getById(String id) {
-        return groupRepository.findById(id);
+    public Optional<GroupDto> getById(String id) {
+        Group group = groupRepository.findById(id).get();
+        return Optional.of(groupMapper.toDto(group));
     }
 
     @Override
-    public void addNewGroup(GroupDto group) {
-        Group group1 = groupMapper.toEntity(group);
+    public void addNewGroup(GroupDto groupDto) {
+        Group group1 = groupMapper.toEntity(groupDto);
         groupRepository.save(group1);
     }
 
     @Override
-    public List<Group> findByDegree(String degree) {
-        return groupRepository.findByDegree(degree);
+    public List<GroupDto> findByDegree(String degree) {
+        return StreamSupport.stream(
+                        groupRepository.findByDegree(degree).spliterator(), false )
+                .map(groupMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<Group> findBySpecialization(String specialization) {
-        return groupRepository.findBySpecialization(specialization);
+    public List<GroupDto> findBySpecialization(String specialization) {
+        return StreamSupport.stream(
+                        groupRepository.findBySpecialization(specialization).spliterator(), false )
+                .map(groupMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -52,7 +64,8 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Optional<Group> update(Group group) {
-        return Optional.of(groupRepository.save(group));
+    public Optional<GroupDto> update(GroupDto groupDto) {
+        Group group = groupRepository.save(groupMapper.toEntity(groupDto));
+        return Optional.of(groupMapper.toDto(group));
     }
 }
