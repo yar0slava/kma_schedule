@@ -1,15 +1,15 @@
 package com.example.kma_schedule.service;
 
-import com.example.kma_schedule.database.entity.Record;
+import com.example.kma_schedule.dto.RecordDto;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface RecordService {
 
-    Optional<Record> getById(Integer id);
-    void addNewRecord(Record record);
-    List<Record> getAll();
+    Optional<RecordDto> getById(Integer id);
+    void addNewRecord(RecordDto record);
+    List<RecordDto> getAll();
     void deleteById(Integer id);
-    Optional<Record> update(Record record);
+    Optional<RecordDto> update(RecordDto record);
 }
