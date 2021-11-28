@@ -9,5 +9,5 @@ public class DisciplineDto {
 
     private Integer disciplineId;
     private String name;
-    private LecturerDto lecturer;
+    private Integer lecturerId;
 }
