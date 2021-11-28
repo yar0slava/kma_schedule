@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -19,8 +20,7 @@ public class Discipline {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotBlank(message = "Discipline ID is mandatory")
-    @Size(min = 6, max = 6)
+    @NotNull(message = "Discipline ID is mandatory")
     private Integer disciplineId;
 
     @Column
