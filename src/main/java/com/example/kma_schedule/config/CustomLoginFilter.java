@@ -1,7 +1,6 @@
 package com.example.kma_schedule.config;
 
 import com.example.kma_schedule.database.entity.User;
-import com.example.kma_schedule.dto.LoginResponseDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import lombok.Value;
@@ -57,10 +56,8 @@ public class CustomLoginFilter extends UsernamePasswordAuthenticationFilter {
 
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
-//        LoginResponseDto loginResponseDto = new LoginResponseDto(jwtTokenGenerator.generateToken(authenticatedUser));
-//        response.getWriter().write(loginResponseDto.toString());
+        response.getWriter().write("{}");
         response.setHeader(HttpHeaders.SET_COOKIE, "token="+jwtTokenGenerator.generateToken(authenticatedUser));
-//        response.setHeader(HttpHeaders.AUTHORIZATION, jwtTokenGenerator.generateToken(authenticatedUser));
         System.out.println("SUCCESS");
     }
 

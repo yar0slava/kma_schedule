@@ -25,7 +25,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.SneakyThrows;
 
-//@RequiredArgsConstructor
 @Configuration
 @EnableGlobalMethodSecurity(jsr250Enabled = true, prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -52,6 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/sign-up").not().fullyAuthenticated()
+                .antMatchers("/sign-in").not().fullyAuthenticated()
                 .antMatchers("/records").authenticated()
                 .antMatchers("/lectors","/group", "/classtime", "/classroom", "/disciplines").hasAuthority("ADMIN")
                 .antMatchers("/css/**").permitAll()
@@ -63,7 +63,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(logoutFilter())
                 .addFilterBefore(customLoginFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(new AuthenticationFilter(userDetailsService(), jwtTokenGenerator), CustomLoginFilter.class);
-
 
     }
 

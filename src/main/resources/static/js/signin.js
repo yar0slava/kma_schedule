@@ -15,14 +15,10 @@ $(document).ready(function () {
             type: 'POST',
             url: '/sign-in',
             dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+
             data: JSON.stringify(user),
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Content-Type', 'application/json')
-            },
             success: function (response, status, xhr) {
-                console.log(xhr.responseJSON);
-                // document.cookie = "token=" + xhr.responseJSON.token;
-                // localStorage.setItem("token", xhr.responseJSON.token);
                 window.location = '/';
             },
             error: function (response, status, xhr) {
@@ -31,5 +27,4 @@ $(document).ready(function () {
             }
         })
     }
-
 });
