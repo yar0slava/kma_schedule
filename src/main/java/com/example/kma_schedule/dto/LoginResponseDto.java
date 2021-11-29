@@ -9,4 +9,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class LoginResponseDto {
     String token;
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"token\":\"" + token + '\"' +
+                '}';
+    }
 }
