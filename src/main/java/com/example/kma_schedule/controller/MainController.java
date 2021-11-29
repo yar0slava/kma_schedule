@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class MainController {
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    public String getAll(){
-        return "records";
+    public String getMain(){
+        return "index";
     }
 }

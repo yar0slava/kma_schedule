@@ -21,11 +21,13 @@ $(document).ready(function () {
             },
             success: function (response, status, xhr) {
                 console.log(xhr.responseJSON);
-                localStorage.setItem("token", xhr.responseJSON.token);
-                window.location = '/records';
+                // document.cookie = "token=" + xhr.responseJSON.token;
+                // localStorage.setItem("token", xhr.responseJSON.token);
+                window.location = '/';
             },
             error: function (response, status, xhr) {
-                alert("Incorrect username or password", xhr.responseJSON);
+                alert("Incorrect username or password");
+                console.log(response);
             }
         })
     }

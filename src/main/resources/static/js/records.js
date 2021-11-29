@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    localStorage.getItem("token")
+
     getRecords();
 
         function getRecords(){
@@ -6,15 +8,13 @@ $(document).ready(function () {
                 type: "GET",
                 url: "/records/all",
                 beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Content-Type', 'application/json'),
-                        xhr.setRequestHeader('Authorization', localStorage.getItem("token"))
+                    xhr.setRequestHeader('Content-Type', 'application/json')
                 },
                 success: function (json) {
                     console.log(json);
                 },
                 error: function (response, status, xhr) {
-                    alert("smth went wrong", xhr.responseJSON);
-                    console.log(xhr.responseJSON);
+                    alert("You don't have access to this data!");
                 }
             });
         }

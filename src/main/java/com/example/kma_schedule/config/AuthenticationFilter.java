@@ -8,9 +8,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.web.util.WebUtils;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -25,7 +27,9 @@ public class AuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse, final FilterChain filterChain)
             throws ServletException, IOException {
 
-        final String token = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
+//        final String token = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
+        Cookie cookie = WebUtils.getCookie(httpServletRequest, "token");
+        final String token = cookie != null ? cookie.getValue() : "";
         if (!StringUtils.hasText(token)) {
             System.out.println("anonymous request to endpoint " + httpServletRequest.getMethod() + " " + getRequestPath(httpServletRequest));
             filterChain.doFilter(httpServletRequest, httpServletResponse);      // <--- important

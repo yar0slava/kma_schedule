@@ -57,9 +57,9 @@ public class CustomLoginFilter extends UsernamePasswordAuthenticationFilter {
 
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
-        LoginResponseDto loginResponseDto = new LoginResponseDto(jwtTokenGenerator.generateToken(authenticatedUser));
-        response.getWriter().write(loginResponseDto.toString());
-
+//        LoginResponseDto loginResponseDto = new LoginResponseDto(jwtTokenGenerator.generateToken(authenticatedUser));
+//        response.getWriter().write(loginResponseDto.toString());
+        response.setHeader(HttpHeaders.SET_COOKIE, "token="+jwtTokenGenerator.generateToken(authenticatedUser));
 //        response.setHeader(HttpHeaders.AUTHORIZATION, jwtTokenGenerator.generateToken(authenticatedUser));
         System.out.println("SUCCESS");
     }
