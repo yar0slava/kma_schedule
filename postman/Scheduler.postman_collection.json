@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3429cc2a-85a2-425c-a478-3e28d6ca382e",
+		"_postman_id": "de97c619-d47d-4765-ac7e-520984c62b82",
 		"name": "Scheduler",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"lecturerId\": 1,\r\n    \"name\": \"Olena Andriivna\"\r\n    \r\n}",
+							"raw": "{\r\n    \"name\": \"Olena\",\r\n    \"surname\": \"Kovalenko\",\r\n    \"middlename\" : \"Andriivna\"\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -37,7 +37,7 @@
 					"response": []
 				},
 				{
-					"name": "Get lecturers",
+					"name": "Get lecturers page",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -106,7 +106,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"lecturerId\":1,\r\n    \"name\":\"updated name test\"\r\n}",
+							"raw": "{\r\n    \"lecturerId\":1,\r\n    \"name\":\"updated name test\",\r\n    \"surname\": \"Kovalenko\",\r\n    \"middlename\" : \"Andriivna\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -155,8 +155,1005 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get all lecturers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/lectors/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"lectors",
+								"all"
+							]
+						}
+					},
+					"response": []
 				}
 			]
+		},
+		{
+			"name": "Classrooms",
+			"item": [
+				{
+					"name": "Create new classroom",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"225\",\r\n    \"capacity\": \"50\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/classroom",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classroom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get classrooms page",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/classroom",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classroom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the classroom by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/classroom/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classroom",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update classroom",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"classroomId\":1,\r\n    \"name\":\"225\",\r\n    \"capacity\": \"45\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/classroom",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classroom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete classroom",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/classroom/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classroom",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all classrooms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/classroom/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classroom",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ClassTime",
+			"item": [
+				{
+					"name": "Create new classtime",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"classDate\": \"2021-12-20\",\r\n    \"classTime\": \"17:55:00\",\r\n    \"weekNumber\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/classtime",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classtime"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get classtime page",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/classtime",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classtime"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the classtime by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/classtime/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classtime",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all classtimes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/classtime/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classtime",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update classtime",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"classTimeId\": 1,\r\n    \"classDate\": \"2021-12-10\",\r\n    \"classTime\": \"17:55:00\",\r\n    \"weekNumber\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/classtime",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classtime"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete classtime",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/classtime/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classtime",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Disciplines",
+			"item": [
+				{
+					"name": "Create new discipline",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"disciplineId\": 1,\r\n    \"name\": \"Differential equations\",\r\n    \"lecturerId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/disciplines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"disciplines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the discipline by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/disciplines/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"disciplines",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all disciplines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/disciplines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"disciplines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update discipline name",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"disciplineId\": 1,\r\n    \"name\": \"Math logic\",\r\n    \"lecturerId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/disciplines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"disciplines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete discipline",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/disciplines/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"disciplines",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Groups",
+			"item": [
+				{
+					"name": "Create new group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"CS-2 B G1\",\r\n    \"isLecture\": true,\r\n    \"specialization\": \"Computer Science\",\r\n    \"degree\": \"Bachelor\",\r\n    \"course\": 2,\r\n    \"groupNumber\": 1,\r\n    \"lecturerId\" : 1\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/group",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get groups page",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/group",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all groups",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/group/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"group",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update group",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"CS-2 B G1\",\r\n    \"isLecture\": true,\r\n    \"specialization\": \"Computer Science\",\r\n    \"degree\": \"Bachelor\",\r\n    \"course\": 2,\r\n    \"groupNumber\": 3,\r\n    \"lecturerId\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/group",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete group",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/group/CS-2 B G1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"group",
+								"CS-2 B G1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the groups by degree",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/group/degree?degree=Bachelor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"group",
+								"degree"
+							],
+							"query": [
+								{
+									"key": "degree",
+									"value": "Bachelor"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the groups by specialization",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/group/specialization?specialization=Computer Science",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"group",
+								"specialization"
+							],
+							"query": [
+								{
+									"key": "specialization",
+									"value": "Computer Science"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get group by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/group/CS-2 B G1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"group",
+								"CS-2 B G1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Records",
+			"item": [
+				{
+					"name": "Create new record",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"disciplineId\": 1,\r\n    \"classTimeId\": 1,\r\n    \"groupId\" : \"CS-2 B G1\",\r\n    \"classroomId\": 1,\r\n    \"lecturerId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/records",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"records"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get records page",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/records",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"records"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the record by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/records/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"records",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all records",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/records/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"records",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update record",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"disciplineId\": 1,\r\n    \"classTimeId\": 1,\r\n    \"groupId\" : \"CS-2 B G1\",\r\n    \"classroomId\": 1,\r\n    \"lecturerId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/records",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"records"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete record",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/records/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"records",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sign-in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"admin@gmail.com\",\n    \"password\":\"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/sign-in",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"sign-in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign-up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/sign-up?username=user&password=password&email=admin%40gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"sign-up"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "user"
+						},
+						{
+							"key": "password",
+							"value": "password"
+						},
+						{
+							"key": "email",
+							"value": "admin%40gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/records/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20ifQ.ccTJp5iJ4KV7Yr_eBjhGQTgzxbWGBaup4TKV2wrp2VU",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/records/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"records",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
