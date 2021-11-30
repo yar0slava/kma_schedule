@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.util.HashMap;
 import java.util.Map;
 
+//клас, де зібрані @ExceptionHandler, що застосуються глобально
 @ControllerAdvice
 public class ExceptionValidationController {
 
+    //Exception to be thrown when validation on an argument annotated with @Valid fails.
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(
