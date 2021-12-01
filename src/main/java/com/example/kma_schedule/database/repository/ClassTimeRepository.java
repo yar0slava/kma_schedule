@@ -1,9 +1,7 @@
 package com.example.kma_schedule.database.repository;
 
 import com.example.kma_schedule.database.entity.ClassTime;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface ClassTimeRepository extends CrudRepository<ClassTime, Integer> {
+public interface ClassTimeRepository extends JpaRepository<ClassTime, Integer> {
 }

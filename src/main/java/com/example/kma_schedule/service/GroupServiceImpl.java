@@ -1,6 +1,5 @@
 package com.example.kma_schedule.service;
 
-import com.example.kma_schedule.database.entity.Discipline;
 import com.example.kma_schedule.database.entity.Group;
 import com.example.kma_schedule.database.repository.GroupRepository;
 import com.example.kma_schedule.dto.GroupDto;
