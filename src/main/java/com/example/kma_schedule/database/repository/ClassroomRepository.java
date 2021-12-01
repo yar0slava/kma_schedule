@@ -1,12 +1,10 @@
 package com.example.kma_schedule.database.repository;
 
 import com.example.kma_schedule.database.entity.Classroom;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-@Repository
-public interface ClassroomRepository extends CrudRepository<Classroom, Integer> {
+public interface ClassroomRepository extends JpaRepository<Classroom, Integer> {
     Optional<Classroom> findByName(String name);
 }

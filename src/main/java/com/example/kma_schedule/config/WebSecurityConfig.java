@@ -1,6 +1,9 @@
 package com.example.kma_schedule.config;
 
+
 import com.example.kma_schedule.service.UserServiceImpl;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,22 +24,28 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import static org.springframework.http.HttpMethod.POST;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import lombok.SneakyThrows;
-
 @Configuration
 @EnableGlobalMethodSecurity(jsr250Enabled = true, prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final ObjectMapper objectMapper;
     private final JwtTokenGenerator jwtTokenGenerator;
+    //    private JwtTokenGenerator jwtTokenGenerator;
     private UserServiceImpl userService;
 
     public WebSecurityConfig(ObjectMapper objectMapper, JwtTokenGenerator jwtTokenGenerator) {
         this.objectMapper = objectMapper;
         this.jwtTokenGenerator = jwtTokenGenerator;
     }
+
+//    public WebSecurityConfig(ObjectMapper objectMapper) {
+//        this.objectMapper = objectMapper;
+//    }
+//
+//    @Autowired
+//    public void setJwtTokenGenerator(JwtTokenGenerator jwtTokenGenerator) {
+//        this.jwtTokenGenerator = jwtTokenGenerator;
+//    }
 
     @Autowired
     public void setUserService(UserServiceImpl userService) {

@@ -2,11 +2,7 @@ package com.example.kma_schedule.controller;
 
 import com.example.kma_schedule.dto.ClassroomDto;
 import com.example.kma_schedule.service.ClassroomServiceImpl;
-import org.apache.log4j.MDC;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.Marker;
-import org.apache.logging.log4j.MarkerManager;
+import org.apache.logging.log4j.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,11 +28,11 @@ public class AdminController {
     @ResponseStatus(HttpStatus.CREATED)
     public void createNewClassroom(@RequestBody ClassroomDto classroomDto) {
         classroomService.addNewClassroom(classroomDto);
-        //MDC.put("admin.login",classroomDto.getAdminLogin());
-        MDC.put("classroom.name", classroomDto.getName());
-        MDC.put("classroom.capacity", classroomDto.getCapacity());
-        logger.info(marker, "{} created a new classroom in scheduler with name {} and capacity {}", MDC.get("admin.login"), MDC.get("classroom.name"), MDC.get("classroom.capacity"));
-        MDC.clear();
+        ThreadContext.put("classroom.name", classroomDto.getName());
+        ThreadContext.put("classroom.capacity", classroomDto.getCapacity().toString());
+        logger.info(marker, "{} created a new classroom in scheduler with name {} and capacity {}", ThreadContext.get("admin.login"), ThreadContext.get("classroom.name"), ThreadContext.get("classroom.capacity"));
+        logger.info(marker, "test 123");
+        ThreadContext.clearAll();
     }
 
 

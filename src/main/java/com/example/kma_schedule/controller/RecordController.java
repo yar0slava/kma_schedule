@@ -76,6 +76,7 @@ public class RecordController {
         recordService.update(record);
     }
 
+    //Активує обробку на рівні свого контролеру
     @ExceptionHandler({ RecordNotFoundException.class })
     public ResponseEntity<Object> handleRecordNotFoundException(Exception ex, WebRequest request) {
         return new ResponseEntity<Object>(ex.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND);
