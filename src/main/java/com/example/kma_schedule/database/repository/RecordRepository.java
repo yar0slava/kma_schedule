@@ -1,9 +1,7 @@
 package com.example.kma_schedule.database.repository;
 
 import com.example.kma_schedule.database.entity.Record;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface RecordRepository extends CrudRepository<Record, Integer> {
+public interface RecordRepository extends JpaRepository<Record, Integer> {
 }
