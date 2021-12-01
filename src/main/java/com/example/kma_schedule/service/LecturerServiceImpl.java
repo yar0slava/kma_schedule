@@ -1,5 +1,7 @@
 package com.example.kma_schedule.service;
 
+import com.example.kma_schedule.aop.LogExecutionTime;
+import com.example.kma_schedule.aop.LogMethodParameters;
 import com.example.kma_schedule.database.repository.LecturerRepository;
 import com.example.kma_schedule.dto.LecturerDto;
 import com.example.kma_schedule.mapper.LecturerMapper;
@@ -33,6 +35,8 @@ public class LecturerServiceImpl implements LecturerService {
     }
 
     @Override
+    @LogMethodParameters
+    @LogExecutionTime
     public void addNewLecturer(LecturerDto lecturer) {
         lecturerRepository.save(lecturerMapper.toEntity(lecturer));
     }
