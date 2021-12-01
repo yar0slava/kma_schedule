@@ -36,9 +36,10 @@ public class CustomLoginFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     public Authentication attemptAuthentication(final HttpServletRequest request, final HttpServletResponse response) {
         final UserCredentials userCredentials = objectMapper.readValue(request.getInputStream(), UserCredentials.class);
+        System.out.println("USER CREDS " + userCredentials.getEmail() + " " + userCredentials.getPassword());
 
         final UsernamePasswordAuthenticationToken authToken =
-                new UsernamePasswordAuthenticationToken(userCredentials.getLogin(), userCredentials.getPassword(), new ArrayList<>());
+                new UsernamePasswordAuthenticationToken(userCredentials.getEmail(), userCredentials.getPassword(), new ArrayList<>());
 
         System.out.println(userCredentials.getPassword());
 
@@ -54,9 +55,9 @@ public class CustomLoginFilter extends UsernamePasswordAuthenticationFilter {
         final User authenticatedUser = (User) auth.getPrincipal();
 
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        response.getWriter().write(objectMapper.writeValueAsString(authenticatedUser));
 
-        response.setHeader(HttpHeaders.AUTHORIZATION, jwtTokenGenerator.generateToken(authenticatedUser));
+        response.getWriter().write("{}");
+        response.setHeader(HttpHeaders.SET_COOKIE, "token="+jwtTokenGenerator.generateToken(authenticatedUser));
         System.out.println("SUCCESS");
     }
 
@@ -71,7 +72,7 @@ public class CustomLoginFilter extends UsernamePasswordAuthenticationFilter {
 
     @Value
     private static class UserCredentials {
-        private final String login;
+        private final String email;
         private final String password;
     }
 }

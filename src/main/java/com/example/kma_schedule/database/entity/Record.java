@@ -3,9 +3,7 @@ package com.example.kma_schedule.database.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -18,8 +16,7 @@ import javax.validation.constraints.Size;
 public class Record {
 
     @Id
-    @NotBlank(message = "ID is mandatory")
-    @Size(min = 6, max = 6)
+    @NotNull(message = "ID is mandatory")
     private Integer id;
 
     @ManyToOne

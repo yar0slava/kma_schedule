@@ -6,12 +6,13 @@
         <html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
         <head>
             <meta charset="UTF-8">
-            <title>Додати лектора</title>
+            <title>Records</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
         </head>
 <body>
+<div id="content"></div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,31 +20,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav">
-                <li class="nav-item" sec:authorize="hasAnyRole('USER','ADMIN')">
+                <li class="nav-item" sec:authorize="hasAnyAuthority('USER','ADMIN')">
                     <a class="nav-link" href="favorite-books">Scheduler</a>
                 </li>
-                <li class="nav-item" sec:authorize="hasRole('USER')">
+                <li class="nav-item" sec:authorize="hasAuthority('USER')">
                     <a class="nav-link" href="/add-book">My Disciplines</a>
                 </li>
-
-                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a class="nav-link" href="/">Add Lector</a>
                 </li>
-
-                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a class="nav-link" href="/">Add Group</a>
                 </li>
-
-                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a class="nav-link" href="/">Add Discipline</a>
                 </li>
-
-                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a class="nav-link" href="/">Add Classtime</a>
                 </li>
-
-
-                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a class="nav-link" href="/">Add Classroom</a>
                 </li>
             </ul>
@@ -52,5 +47,6 @@
 </nav>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="/js/records.js"></script>
 </body>
 </html>

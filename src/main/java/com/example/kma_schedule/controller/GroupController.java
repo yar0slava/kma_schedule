@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/group")
@@ -30,7 +31,48 @@ public class GroupController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createNewDiscipline(@Valid @RequestBody GroupDto groupDto) {
+    public void createNewGroup(@Valid @RequestBody GroupDto groupDto) {
         groupService.addNewGroup(groupDto);
+    }
+
+    @GetMapping("/all")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<GroupDto> getAll(){
+        return groupService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public GroupDto get(@PathVariable String id){
+        return  groupService.getById(id).get();
+    }
+
+    @GetMapping("/degree")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<GroupDto> getByDegree(@RequestParam String degree){
+        return  groupService.findByDegree(degree);
+    }
+
+    @GetMapping("/specialization")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<GroupDto> getBySpecialization(@RequestParam String specialization){
+        return  groupService.findBySpecialization(specialization);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable String id){
+        groupService.deleteById(id);
+    }
+
+    @PutMapping()
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public GroupDto update(@RequestBody GroupDto groupDto){
+        return groupService.update(groupDto).get();
     }
 }

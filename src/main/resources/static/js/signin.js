@@ -5,7 +5,7 @@ $(document).ready(function () {
         ev.preventDefault();
 
         let user = {
-            username: $("#username").val(),
+            email: $("#email").val(),
             password: $("#password").val()
         }
 
@@ -15,47 +15,16 @@ $(document).ready(function () {
             type: 'POST',
             url: '/sign-in',
             dataType: 'json',
-            data: JSON.stringify(user),
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Content-Type', 'application/json')
-            },
-            success: function (response, status, xhr) {
-                console.log(xhr.responseJSON);
-                // localStorage.setItem("token", xhr.getResponseHeader("Authorization"));
-                localStorage.setItem("token", xhr.responseJSON.token);
-                window.location = '/records';
-                // getMain();
+            contentType: 'application/json; charset=utf-8',
 
+            data: JSON.stringify(user),
+            success: function (response, status, xhr) {
+                window.location = '/';
             },
             error: function (response, status, xhr) {
-                alert("Incorrect username or password", xhr.responseJSON);
+                alert("Incorrect username or password");
+                console.log(response);
             }
         })
     }
-
-    //
-    // function getMain(){
-    //         $.ajax({
-    //             type: 'GET',
-    //             url: '/main',
-    //             dataType: 'json',
-    //             beforeSend: function (xhr) {
-    //                 xhr.setRequestHeader('Content-Type', 'application/json')
-    //             },
-    //             success: function (res) {
-    //                 console.log(res);
-    //
-    //                 $('#hospitalss').html(searchResults(res)).then(
-    //                     window.location = '/main-render'
-    //                 );
-    //
-    //
-    //
-    //             },
-    //             error: function (response) {
-    //                 console.log(response);
-    //             }
-    //         })
-    // }
-
 });

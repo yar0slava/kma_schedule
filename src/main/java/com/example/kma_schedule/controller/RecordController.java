@@ -1,6 +1,6 @@
 package com.example.kma_schedule.controller;
 
-import com.example.kma_schedule.database.entity.Record;
+import com.example.kma_schedule.dto.RecordDto;
 import com.example.kma_schedule.exceptions.RecordNotFoundException;
 import com.example.kma_schedule.service.RecordService;
 import org.apache.logging.log4j.LogManager;
@@ -17,6 +17,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.ui.Model;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -36,10 +37,19 @@ public class RecordController {
         return "records";
     }
 
+    @GetMapping("/all")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<RecordDto> getAll(){
+        System.out.println("HERE RECORDS");
+        return recordService.getAll();
+    }
+
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Record get(@PathVariable Integer id) throws RecordNotFoundException {
-        Optional<Record> optionalRecord = recordService.getById(id);
+    @ResponseBody
+    public RecordDto get(@PathVariable Integer id) throws RecordNotFoundException {
+        Optional<RecordDto> optionalRecord = recordService.getById(id);
 
         if(optionalRecord.isPresent()){
             return optionalRecord.get();
@@ -56,16 +66,17 @@ public class RecordController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@Valid @RequestBody Record record){
+    public void create(@Valid @RequestBody RecordDto record){
         recordService.addNewRecord(record);
     }
 
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public void update(@Valid @RequestBody Record record){
+    public void update(@Valid @RequestBody RecordDto record){
         recordService.update(record);
     }
 
+    //Активує обробку на рівні свого контролеру
     @ExceptionHandler({ RecordNotFoundException.class })
     public ResponseEntity<Object> handleRecordNotFoundException(Exception ex, WebRequest request) {
         return new ResponseEntity<Object>(ex.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND);

@@ -7,11 +7,12 @@ import lombok.Setter;
 @Setter
 public class GroupDto {
 
+    private String id;
     private Boolean isLecture;
     private String specialization;
     private String degree;
     private Integer course;
     private Integer groupNumber;
-    private LecturerDto lecturer;
+    private Integer lecturerId;
 
 }
