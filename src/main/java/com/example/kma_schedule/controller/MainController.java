@@ -12,7 +12,7 @@ import java.io.*;
 @Controller
 public class MainController {
 
-    @GetMapping("/data/book.pdf")
+    @GetMapping("/data/book")
     public void getSteamingFile(HttpServletResponse response) throws IOException {
         response.setContentType("application/pdf");
         response.setHeader("Content-Disposition", "attachment; filename=\"book.pdf\"");
