@@ -38,15 +38,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.jwtTokenGenerator = jwtTokenGenerator;
     }
 
-//    public WebSecurityConfig(ObjectMapper objectMapper) {
-//        this.objectMapper = objectMapper;
-//    }
-//
-//    @Autowired
-//    public void setJwtTokenGenerator(JwtTokenGenerator jwtTokenGenerator) {
-//        this.jwtTokenGenerator = jwtTokenGenerator;
-//    }
-
     @Autowired
     public void setUserService(UserServiceImpl userService) {
         this.userService = userService;
