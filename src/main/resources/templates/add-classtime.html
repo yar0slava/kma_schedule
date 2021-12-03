@@ -15,28 +15,29 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav">
-                <li class="nav-item" sec:authorize="hasAnyRole('USER','ADMIN')">
-                    <a class="nav-link" href="favorite-books">Scheduler</a>
+                <li class="nav-item" sec:authorize="hasAnyAuthority('USER','ADMIN')">
+                    <a class="nav-link" href="/records">Scheduler</a>
                 </li>
-                <li class="nav-item" sec:authorize="hasRole('USER')">
-                    <a class="nav-link" href="/add-book">My Disciplines</a>
-                </li>
-
-                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link" href="/">Add Lector</a>
+                <li class="nav-item" sec:authorize="hasAnyAuthority('USER')">
+                    <a class="nav-link" href="/disciplines">My Disciplines</a>
                 </li>
 
-                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link" href="/">Add Group</a>
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN')">
+                    <a class="nav-link" href="/lectors">Add Lector</a>
                 </li>
 
-                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link" href="/">Add Discipline</a>
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN')">
+                    <a class="nav-link" href="/group">Add Group</a>
                 </li>
 
-                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link" href="/">Add Classtime</a>
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN')">
+                    <a class="nav-link" href="/disciplines">Add Discipline</a>
                 </li>
+
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN')">
+                    <a class="nav-link" href="/classtime">Add Classtime</a>
+                </li>
+
             </ul>
         </div>
     </div>
