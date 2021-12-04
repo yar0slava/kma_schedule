@@ -35,6 +35,13 @@ public class ClassroomController {
         return  classroomService.getAll();
     }
 
+    @GetMapping("/name/{name}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<ClassroomDto> getByName(@PathVariable String name){
+        return  classroomService.getByName(name);
+    }
+
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody

@@ -29,8 +29,11 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public Optional<ClassroomDto> getByName(String name) {
-        return Optional.of(classroomMapper.toDto(classroomRepository.findByName(name).get()));
+    public List<ClassroomDto> getByName(String name) {
+        return StreamSupport.stream(
+                        classroomRepository.findByNameContains(name).spliterator(), false )
+                .map(classroomMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -44,7 +47,8 @@ public class ClassroomServiceImpl implements ClassroomService {
         return StreamSupport.stream(
                         classroomRepository.findAll().spliterator(), false )
                 .map(classroomMapper::toDto)
-                .collect(Collectors.toList());    }
+                .collect(Collectors.toList());
+    }
 
     @Override
     public void deleteById(Integer id) {

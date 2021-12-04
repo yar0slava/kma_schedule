@@ -3,8 +3,9 @@ package com.example.kma_schedule.database.repository;
 import com.example.kma_schedule.database.entity.Classroom;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface ClassroomRepository extends JpaRepository<Classroom, Integer> {
-    Optional<Classroom> findByName(String name);
+
+    List<Classroom> findByNameContains(String name);
 }
