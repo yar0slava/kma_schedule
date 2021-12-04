@@ -11,4 +11,6 @@ public interface DisciplineService {
     List<DisciplineDto> getAll();
     void deleteById(Integer id);
     Optional<DisciplineDto> update(DisciplineDto discipline);
+
+    List<DisciplineDto> getByName(String name);
 }

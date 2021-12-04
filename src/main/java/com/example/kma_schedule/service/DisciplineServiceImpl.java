@@ -42,6 +42,14 @@ public class DisciplineServiceImpl implements DisciplineService {
     }
 
     @Override
+    public List<DisciplineDto> getByName(String name) {
+        return StreamSupport.stream(
+                        disciplineRepository.findByNameContains(name).spliterator(), false )
+                .map(disciplineMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public void deleteById(Integer id) {
         disciplineRepository.deleteById(id);
     }
