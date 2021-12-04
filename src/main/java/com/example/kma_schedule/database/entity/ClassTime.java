@@ -3,7 +3,6 @@ package com.example.kma_schedule.database.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Getter
@@ -21,8 +20,8 @@ public class ClassTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer classTimeId;
 
-    @Column(name = "classDate")
-    private LocalDate classDate;
+    @Column(name = "classDay")
+    private WeekDay weekDay;
 
     @Column(name = "classTime")
     private LocalTime classTime;

@@ -1,5 +1,6 @@
 package com.example.kma_schedule.service;
 
+import com.example.kma_schedule.database.entity.WeekDay;
 import com.example.kma_schedule.database.repository.ClassTimeRepository;
 import com.example.kma_schedule.dto.ClassTimeDto;
 import com.example.kma_schedule.mapper.ClassTimeMapper;
@@ -33,6 +34,13 @@ public class ClassTimeServiceImpl implements ClassTimeService {
     public List<ClassTimeDto> getAll() {
         return StreamSupport.stream(
                         classTimeRepository.findAll().spliterator(), false )
+                .map(classTimeMapper::toDto)
+                .collect(Collectors.toList());    }
+
+    @Override
+    public List<ClassTimeDto> getByWeekDayAndWeekNumber(WeekDay weekDay, Integer weekNumber) {
+        return StreamSupport.stream(
+                        classTimeRepository.findByWeekDayAndWeekNumber(weekDay, weekNumber).spliterator(), false )
                 .map(classTimeMapper::toDto)
                 .collect(Collectors.toList());    }
 

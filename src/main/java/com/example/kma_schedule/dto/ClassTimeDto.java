@@ -1,8 +1,8 @@
 package com.example.kma_schedule.dto;
 
+import com.example.kma_schedule.database.entity.WeekDay;
 import lombok.Getter;
 import lombok.Setter;
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Getter
@@ -10,7 +10,7 @@ import java.time.LocalTime;
 public class ClassTimeDto {
 
     private Integer classTimeId;
-    private LocalDate classDate;
+    private WeekDay weekDay;
     private LocalTime classTime;
     private Integer weekNumber;
 }
