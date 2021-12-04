@@ -1,5 +1,6 @@
 package com.example.kma_schedule.controller;
 
+import com.example.kma_schedule.database.entity.WeekDay;
 import com.example.kma_schedule.dto.RecordDto;
 import com.example.kma_schedule.exceptions.RecordNotFoundException;
 import com.example.kma_schedule.service.RecordService;
@@ -43,6 +44,38 @@ public class RecordController {
     public List<RecordDto> getAll(){
         System.out.println("HERE RECORDS");
         return recordService.getAll();
+    }
+
+    @GetMapping("/lecturer/{lecturerId}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<RecordDto> getByLecturerId(@PathVariable Integer lecturerId){
+        System.out.println("HERE RECORDS");
+        return recordService.getByLecturerId(lecturerId);
+    }
+
+    @GetMapping("/group/{groupId}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<RecordDto> getByGroupId(@PathVariable Integer groupId){
+        System.out.println("HERE RECORDS");
+        return recordService.getByGroupId(groupId);
+    }
+
+    @GetMapping("/discipline/{disciplineId}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<RecordDto> getByDisciplineId(@PathVariable Integer disciplineId){
+        System.out.println("HERE RECORDS");
+        return recordService.getByDisciplineId(disciplineId);
+    }
+
+    @GetMapping("/{weekDay}/{weekNumber}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<RecordDto> getByWeekDayAndWeekNumber(@PathVariable WeekDay weekDay, @PathVariable Integer weekNumber){
+        System.out.println("HERE RECORDS");
+        return recordService.getByWeekDayAndWeekNumber(weekDay, weekNumber);
     }
 
     @GetMapping("/{id}")
