@@ -175,6 +175,27 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "find lectors by surname",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/lectors/name/Kov",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"lectors",
+								"name",
+								"Kov"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -348,6 +369,27 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "find classrooms by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/classroom/name/225",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classroom",
+								"name",
+								"225"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -361,7 +403,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"classDate\": \"2021-12-20\",\r\n    \"classTime\": \"17:55:00\",\r\n    \"weekNumber\": 1\r\n}",
+							"raw": "{\r\n    \"weekDay\": \"TUESDAY\",\r\n    \"classTime\": \"13:30:00\",\r\n    \"weekNumber\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -521,6 +563,27 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "find classtimes by weekDay and weekNumber",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/classtime/TUESDAY/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"classtime",
+								"TUESDAY",
+								"11"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -662,6 +725,27 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "find disciplines by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/disciplines/name/Differ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"disciplines",
+								"name",
+								"Differ"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -675,7 +759,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"CS-2 B G1\",\r\n    \"isLecture\": true,\r\n    \"specialization\": \"Computer Science\",\r\n    \"degree\": \"Bachelor\",\r\n    \"course\": 2,\r\n    \"groupNumber\": 1,\r\n    \"lecturerId\" : 1\r\n    \r\n}",
+							"raw": "{\r\n    \"isLecture\": true,\r\n    \"specialization\": \"Computer Science\",\r\n    \"degree\": \"Bachelor\",\r\n    \"course\": 2,\r\n    \"groupNumber\": 1,\r\n    \"lecturerId\" : 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -887,6 +971,27 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "find groups by specialization and course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/group/Computer Science/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"group",
+								"Computer Science",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1055,6 +1160,90 @@
 							"port": "8000",
 							"path": [
 								"records",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find records by weekDay and weekNumber",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/records/TUESDAY/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"records",
+								"TUESDAY",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find records by discipline id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/records/discipline/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"records",
+								"discipline",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find records by group id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/records/group/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"records",
+								"group",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find records by lecturer id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/records/lecturer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"records",
+								"lecturer",
 								"1"
 							]
 						}
