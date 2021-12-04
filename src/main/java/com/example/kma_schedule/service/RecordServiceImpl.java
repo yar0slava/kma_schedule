@@ -1,6 +1,7 @@
 package com.example.kma_schedule.service;
 
 import com.example.kma_schedule.database.entity.Record;
+import com.example.kma_schedule.database.entity.WeekDay;
 import com.example.kma_schedule.database.repository.RecordRepository;
 import com.example.kma_schedule.dto.RecordDto;
 import com.example.kma_schedule.mapper.RecordMapper;
@@ -38,6 +39,38 @@ public class RecordServiceImpl implements RecordService{
     public List<RecordDto> getAll() {
         return StreamSupport.stream(
                         recordRepository.findAll().spliterator(), false )
+                .map(recordMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RecordDto> getByLecturerId(Integer lecturerId) {
+        return StreamSupport.stream(
+                        recordRepository.findByLecturer_LecturerId(lecturerId).spliterator(), false )
+                .map(recordMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RecordDto> getByGroupId(Integer groupId) {
+        return StreamSupport.stream(
+                        recordRepository.findByGroup_Id(groupId).spliterator(), false )
+                .map(recordMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RecordDto> getByDisciplineId(Integer disciplineId) {
+        return StreamSupport.stream(
+                        recordRepository.findByDiscipline_DisciplineId(disciplineId).spliterator(), false )
+                .map(recordMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RecordDto> getByWeekDayAndWeekNumber(WeekDay weekDay, Integer weekNumber) {
+        return StreamSupport.stream(
+                        recordRepository.findByClassTime_WeekDayAndClassTime_WeekNumber(weekDay, weekNumber).spliterator(), false )
                 .map(recordMapper::toDto)
                 .collect(Collectors.toList());
     }

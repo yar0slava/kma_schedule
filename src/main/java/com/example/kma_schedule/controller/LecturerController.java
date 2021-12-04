@@ -36,6 +36,15 @@ public class LecturerController {
         return  lecturerService.getAll();
     }
 
+    @GetMapping("/name/{name}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    @LogMethodParameters
+    @LogExecutionTime
+    public List<LecturerDto> getByName(@PathVariable String name){
+        return  lecturerService.getByName(name);
+    }
+
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody

@@ -11,4 +11,6 @@ public interface LecturerService {
     void addNewLecturer(LecturerDto lecturer);
     void deleteById(Integer id);
     Optional<LecturerDto> update(LecturerDto lecturer);
+
+    List<LecturerDto> getByName(String name);
 }

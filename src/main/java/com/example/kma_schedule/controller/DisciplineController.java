@@ -34,6 +34,12 @@ public class DisciplineController {
         return disciplineService.getAll();
     }
 
+    @GetMapping("/name/{name}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<DisciplineDto> getByName(@PathVariable String name){
+        return disciplineService.getByName(name);
+    }
+
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<DisciplineDto> get(@PathVariable Integer id) throws DisciplineException {
