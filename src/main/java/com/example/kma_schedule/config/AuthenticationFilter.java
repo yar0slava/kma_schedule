@@ -27,12 +27,17 @@ public class AuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse, final FilterChain filterChain)
             throws ServletException, IOException {
 
-//        final String token = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
         Cookie cookie = WebUtils.getCookie(httpServletRequest, "token");
         final String token = cookie != null ? cookie.getValue() : "";
+
         if (!StringUtils.hasText(token)) {
             System.out.println("anonymous request to endpoint " + httpServletRequest.getMethod() + " " + getRequestPath(httpServletRequest));
-            filterChain.doFilter(httpServletRequest, httpServletResponse);      // <--- important
+            filterChain.doFilter(httpServletRequest, httpServletResponse);
+            return;
+        }
+        else if (StringUtils.hasText(token) && !jwtTokenGenerator.validateToken(token)) {
+            System.out.println("token is not valid anymore: " + httpServletRequest.getMethod() + " " + getRequestPath(httpServletRequest));
+            filterChain.doFilter(httpServletRequest, httpServletResponse);
             return;
         }
 
@@ -41,7 +46,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         final UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(auth);
         System.out.println("user " + username + " send request to endpoint " + httpServletRequest.getMethod() + " " + getRequestPath(httpServletRequest));
-        filterChain.doFilter(httpServletRequest, httpServletResponse);          // <--- important
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 
     private static String getRequestPath(final HttpServletRequest request) {

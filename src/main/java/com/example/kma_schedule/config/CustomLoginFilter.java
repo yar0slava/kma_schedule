@@ -41,8 +41,6 @@ public class CustomLoginFilter extends UsernamePasswordAuthenticationFilter {
         final UsernamePasswordAuthenticationToken authToken =
                 new UsernamePasswordAuthenticationToken(userCredentials.getEmail(), userCredentials.getPassword(), new ArrayList<>());
 
-        System.out.println(userCredentials.getPassword());
-
         return getAuthenticationManager().authenticate(authToken);
     }
 

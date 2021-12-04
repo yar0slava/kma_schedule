@@ -60,7 +60,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilter(logoutFilter())
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/sign-in").deleteCookies("token")
+                .and()
                 .addFilterBefore(customLoginFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(new AuthenticationFilter(userDetailsService(), jwtTokenGenerator), CustomLoginFilter.class);
 
@@ -101,11 +102,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return customLoginFilter;
     }
 
-    private LogoutFilter logoutFilter() {
-        final LogoutHandler[] logoutHandlers = new LogoutHandler[] {
-                new SecurityContextLogoutHandler()
-        };
-
-        return new LogoutFilter(new LogoutSuccessHandlerAdapter(), logoutHandlers);
-    }
 }
