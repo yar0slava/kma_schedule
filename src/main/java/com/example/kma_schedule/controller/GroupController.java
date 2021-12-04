@@ -63,6 +63,13 @@ public class GroupController {
         return  groupService.findBySpecialization(specialization);
     }
 
+    @GetMapping("/{specialization}/{course}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<GroupDto> getBySpecializationAndCourse(@PathVariable String specialization, @PathVariable Integer course){
+        return  groupService.getBySpecializationAndCourse(specialization, course);
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable Integer id){

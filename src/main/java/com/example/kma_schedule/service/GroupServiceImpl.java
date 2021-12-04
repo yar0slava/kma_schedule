@@ -58,6 +58,14 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
+    public List<GroupDto> getBySpecializationAndCourse(String specialization, Integer course) {
+        return StreamSupport.stream(
+                        groupRepository.findBySpecializationAndCourse(specialization, course).spliterator(), false )
+                .map(groupMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public void deleteById(Integer id) {
         groupRepository.deleteById(id);
     }

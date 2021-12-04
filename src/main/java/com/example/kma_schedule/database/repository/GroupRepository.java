@@ -9,4 +9,6 @@ public interface GroupRepository extends JpaRepository<Group, Integer> {
     List<Group> findByDegree(String degree);
 
     List<Group> findBySpecialization(String specialization);
+
+    List<Group> findBySpecializationAndCourse(String specialization, Integer course);
 }
