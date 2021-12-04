@@ -35,6 +35,14 @@ public class LecturerServiceImpl implements LecturerService {
     }
 
     @Override
+    public List<LecturerDto> getByName(String name) {
+        return StreamSupport.stream(
+                        lecturerRepository.findBySurnameContains(name).spliterator(), false )
+                .map(lecturerMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     @LogMethodParameters
     @LogExecutionTime
     public void addNewLecturer(LecturerDto lecturer) {
