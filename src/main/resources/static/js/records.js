@@ -1,9 +1,7 @@
 $(document).ready(function () {
-    localStorage.getItem("token")
+    $('#logout').onclick(logout);
 
-    getRecords();
-
-        function getRecords(){
+    function logout(){
             $.ajax({
                 type: "GET",
                 url: "/records/all",
