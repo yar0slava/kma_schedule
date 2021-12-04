@@ -7,10 +7,10 @@ import java.util.Optional;
 
 public interface GroupService {
     List<GroupDto> getAll();
-    Optional<GroupDto> getById(String id);
+    Optional<GroupDto> getById(Integer id);
     void addNewGroup(GroupDto group);
     List<GroupDto> findByDegree(String degree);
     List<GroupDto> findBySpecialization(String specialization);
-    void deleteById(String id);
+    void deleteById(Integer id);
     Optional<GroupDto> update(GroupDto group);
 }

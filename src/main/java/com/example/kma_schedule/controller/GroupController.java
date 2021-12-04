@@ -45,7 +45,7 @@ public class GroupController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public GroupDto get(@PathVariable String id){
+    public GroupDto get(@PathVariable Integer id){
         return  groupService.getById(id).get();
     }
 
@@ -65,7 +65,7 @@ public class GroupController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable String id){
+    public void delete(@PathVariable Integer id){
         groupService.deleteById(id);
     }
 

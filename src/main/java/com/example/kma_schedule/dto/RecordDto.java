@@ -10,7 +10,7 @@ public class RecordDto {
     private Integer id;
     private Integer disciplineId;
     private Integer classTimeId;
-    private String groupId;
+    private Integer groupId;
     private Integer classroomId;
     private Integer lecturerId;
 }

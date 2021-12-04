@@ -30,7 +30,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Optional<GroupDto> getById(String id) {
+    public Optional<GroupDto> getById(Integer id) {
         Group group = groupRepository.findById(id).get();
         return Optional.of(groupMapper.toDto(group));
     }
@@ -58,7 +58,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(Integer id) {
         groupRepository.deleteById(id);
     }
 
