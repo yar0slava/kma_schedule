@@ -57,6 +57,16 @@ public class CustomLoginFilter extends UsernamePasswordAuthenticationFilter {
         response.getWriter().write("{}");
         response.setHeader(HttpHeaders.SET_COOKIE, "token="+jwtTokenGenerator.generateToken(authenticatedUser));
         System.out.println("SUCCESS");
+
+//part for react project
+//        response.getWriter().write(objectMapper.writeValueAsString(authenticatedUser));
+//        response.setHeader("Access-Control-Expose-Headers", "Authorization");
+//        response.setHeader(HttpHeaders.AUTHORIZATION, jwtTokenGenerator.generateToken(authenticatedUser));
+//        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Methods", "GET,POST,DELETE,PUT,OPTIONS");
+//        response.setHeader("Access-Control-Allow-Headers", "*");
+//        response.setHeader("Access-Control-Allow-Credentials", "true");
+
     }
 
     @SneakyThrows

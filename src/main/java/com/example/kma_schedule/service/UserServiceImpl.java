@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserDetailsService {
     @EventListener
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
+
         roleRepository.save(Role.builder().id(1L).name("USER").build());
         roleRepository.save(Role.builder().id(2L).name("ADMIN").build());
     }

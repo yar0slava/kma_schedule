@@ -20,7 +20,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.security.web.session.SessionManagementFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.cors.CorsConfiguration;
 
 import static org.springframework.http.HttpMethod.POST;
 
@@ -63,10 +66,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/sign-in").deleteCookies("token")
                 .and()
                 .addFilterBefore(customLoginFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(new AuthenticationFilter(userDetailsService(), jwtTokenGenerator), CustomLoginFilter.class);
-
+                .addFilterBefore(new AuthenticationFilter(userDetailsService(), jwtTokenGenerator), CustomLoginFilter.class)
+         .addFilterBefore(corsFilter(), SessionManagementFilter.class);
     }
 
+    @Bean
+    CorsFilter corsFilter() {
+        CorsFilter filter = new CorsFilter();
+        return filter;
+    }
     @Override
     protected void configure(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
         authManagerBuilder
