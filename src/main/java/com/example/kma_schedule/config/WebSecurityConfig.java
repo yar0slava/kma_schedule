@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/sign-up").not().fullyAuthenticated()
                 .antMatchers("/sign-in").not().fullyAuthenticated()
-                .antMatchers("/records").authenticated()
+                .antMatchers("/records", "/authority").authenticated()
                 .antMatchers("/lectors","/group", "/classtime", "/classroom", "/disciplines").hasAuthority("ADMIN")
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
