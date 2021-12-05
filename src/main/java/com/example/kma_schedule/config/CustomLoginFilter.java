@@ -54,18 +54,20 @@ public class CustomLoginFilter extends UsernamePasswordAuthenticationFilter {
 
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
-        response.getWriter().write("{}");
-        response.setHeader(HttpHeaders.SET_COOKIE, "token="+jwtTokenGenerator.generateToken(authenticatedUser));
-        System.out.println("SUCCESS");
+//        for 9 lab
+//        response.getWriter().write("{}");
+//        response.setHeader(HttpHeaders.SET_COOKIE, "token="+jwtTokenGenerator.generateToken(authenticatedUser));
 
 //part for react project
-//        response.getWriter().write(objectMapper.writeValueAsString(authenticatedUser));
-//        response.setHeader("Access-Control-Expose-Headers", "Authorization");
-//        response.setHeader(HttpHeaders.AUTHORIZATION, jwtTokenGenerator.generateToken(authenticatedUser));
-//        response.setHeader("Access-Control-Allow-Origin", "*");
-//        response.setHeader("Access-Control-Allow-Methods", "GET,POST,DELETE,PUT,OPTIONS");
-//        response.setHeader("Access-Control-Allow-Headers", "*");
-//        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.getWriter().write(objectMapper.writeValueAsString(authenticatedUser));
+        response.setHeader("Access-Control-Expose-Headers", "Authorization");
+        response.setHeader(HttpHeaders.AUTHORIZATION, jwtTokenGenerator.generateToken(authenticatedUser));
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "GET,POST,DELETE,PUT,OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers", "*");
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+
+        System.out.println("SUCCESS Login");
 
     }
 
