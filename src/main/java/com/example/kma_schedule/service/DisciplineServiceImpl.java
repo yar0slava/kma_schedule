@@ -5,6 +5,8 @@ import com.example.kma_schedule.database.repository.DisciplineRepository;
 import com.example.kma_schedule.dto.DisciplineDto;
 import com.example.kma_schedule.mapper.DisciplineMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,6 +36,7 @@ public class DisciplineServiceImpl implements DisciplineService {
     }
 
     @Override
+    @Cacheable(cacheNames = "disciplines")
     public List<DisciplineDto> getAll() {
         return StreamSupport.stream(
                 disciplineRepository.findAll().spliterator(), false )
@@ -50,6 +53,7 @@ public class DisciplineServiceImpl implements DisciplineService {
     }
 
     @Override
+    @CacheEvict(value = "disciplines", allEntries = true)
     public void deleteById(Integer id) {
         disciplineRepository.deleteById(id);
     }
