@@ -6,6 +6,8 @@ import com.example.kma_schedule.database.repository.RecordRepository;
 import com.example.kma_schedule.dto.RecordDto;
 import com.example.kma_schedule.mapper.RecordMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,6 +38,7 @@ public class RecordServiceImpl implements RecordService{
     }
 
     @Override
+    @Cacheable(value = "records")
     public List<RecordDto> getAll() {
         return StreamSupport.stream(
                         recordRepository.findAll().spliterator(), false )
@@ -76,6 +79,7 @@ public class RecordServiceImpl implements RecordService{
     }
 
     @Override
+    @CacheEvict(value = "records", allEntries = true)
     public void deleteById(Integer id) {
         recordRepository.deleteById(id);
     }
