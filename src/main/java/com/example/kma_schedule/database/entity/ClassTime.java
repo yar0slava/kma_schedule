@@ -21,6 +21,7 @@ public class ClassTime {
     private Integer classTimeId;
 
     @Column(name = "classDay")
+    @Enumerated(EnumType.STRING)
     private WeekDay weekDay;
 
     @Column(name = "classTime")
