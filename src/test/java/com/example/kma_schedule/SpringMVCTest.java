@@ -1,39 +1,22 @@
 package com.example.kma_schedule;
 
-//@SpringBootTest
-//@AutoConfigureMockMvc
-//public class SpringWebTest {
-//
-//    @Autowired
-//    private MockMvc mockMvc;
-//
-//    @SneakyThrows
-//    @Test
-//    public void givenSignInURI_whenMockMVC_thenStatusIsOk() {
-//        mockMvc
-//                .perform(MockMvcRequestBuilders.get("/sign-in"))
-//                .andExpect(MockMvcResultMatchers.status().isOk());
-//    }
-//}
-
 import com.example.kma_schedule.config.JwtTokenGenerator;
-import com.example.kma_schedule.controller.UserController;
+import com.example.kma_schedule.controller.LecturerController;
 import com.example.kma_schedule.database.repository.*;
+import com.example.kma_schedule.service.LecturerServiceImpl;
 import com.example.kma_schedule.service.UserServiceImpl;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-@WebMvcTest(UserController.class)
-public class SpringWebTest {
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-    @Autowired
-    private MockMvc mockMvc;
+@WebMvcTest(LecturerController.class)
+public class SpringMVCTest {
 
     @MockBean
     private UserServiceImpl userService;
@@ -43,6 +26,9 @@ public class SpringWebTest {
 
     @MockBean
     private UserRepository userRepository;
+
+    @MockBean
+    private LecturerServiceImpl lecturerService;
 
     @MockBean
     private RecordRepository recordRepository;
@@ -68,13 +54,20 @@ public class SpringWebTest {
     @MockBean
     private DisciplineRepository disciplineRepository;
 
-    @SneakyThrows
+    @Autowired
+    private MockMvc mockMvc;
+
     @Test
-    public void givenSignInURI_whenMockMVC_thenStatusIsOk() {
-        mockMvc
-                .perform(MockMvcRequestBuilders.get("/sign-in"))
-                .andExpect(MockMvcResultMatchers.status().isOk());
+    public void whenInvalidPath_thenReturnStatus404() throws Exception {
+        mockMvc.perform(get("/s43s36s643s"))
+                .andExpect(status().isNotFound());
     }
 
+    @Test
+    public void whenDeleteWithBadId_thenReturnStatus400() throws Exception {
+        mockMvc.perform(delete("/lectors/rgerg")
+                        .contentType("application/json"))
+                .andExpect(status().isBadRequest());
+    }
 }
 
