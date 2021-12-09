@@ -17,8 +17,8 @@ public interface RecordService {
 
     List<FullRecordDto> getAllFull();
 
-    List<RecordDto> getByLecturerId(Integer lecturerId);
+    List<FullRecordDto> getByLecturerId(Integer lecturerId);
     List<RecordDto> getByGroupId(Integer groupId);
-    List<RecordDto> getByDisciplineId(Integer disciplineId);
+    List<FullRecordDto> getByDisciplineId(Integer disciplineId);
     List<RecordDto> getByWeekDayAndWeekNumber(WeekDay weekDay, Integer weekNumber);
 }

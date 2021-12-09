@@ -58,7 +58,7 @@ public class RecordController {
     @GetMapping("/lecturer/{lecturerId}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public List<RecordDto> getByLecturerId(@PathVariable Integer lecturerId){
+    public List<FullRecordDto> getByLecturerId(@PathVariable Integer lecturerId){
         System.out.println("HERE RECORDS");
         return recordService.getByLecturerId(lecturerId);
     }
@@ -74,7 +74,7 @@ public class RecordController {
     @GetMapping("/discipline/{disciplineId}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public List<RecordDto> getByDisciplineId(@PathVariable Integer disciplineId){
+    public List<FullRecordDto> getByDisciplineId(@PathVariable Integer disciplineId){
         System.out.println("HERE RECORDS");
         return recordService.getByDisciplineId(disciplineId);
     }

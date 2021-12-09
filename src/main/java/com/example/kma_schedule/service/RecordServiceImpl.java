@@ -56,10 +56,10 @@ public class RecordServiceImpl implements RecordService{
     }
 
     @Override
-    public List<RecordDto> getByLecturerId(Integer lecturerId) {
+    public List<FullRecordDto> getByLecturerId(Integer lecturerId) {
         return StreamSupport.stream(
                         recordRepository.findByLecturer_LecturerId(lecturerId).spliterator(), false )
-                .map(recordMapper::toDto)
+                .map(recordMapper::toFullDto)
                 .collect(Collectors.toList());
     }
 
@@ -72,10 +72,10 @@ public class RecordServiceImpl implements RecordService{
     }
 
     @Override
-    public List<RecordDto> getByDisciplineId(Integer disciplineId) {
+    public List<FullRecordDto> getByDisciplineId(Integer disciplineId) {
         return StreamSupport.stream(
                         recordRepository.findByDiscipline_DisciplineId(disciplineId).spliterator(), false )
-                .map(recordMapper::toDto)
+                .map(recordMapper::toFullDto)
                 .collect(Collectors.toList());
     }
 
