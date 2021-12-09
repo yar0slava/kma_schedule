@@ -20,7 +20,6 @@ public class Discipline {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull(message = "Discipline ID is mandatory")
     private Integer disciplineId;
 
     @Column
@@ -30,6 +29,6 @@ public class Discipline {
 
     @ManyToOne
     @JoinTable(name = "lecturer_teaches",
-            joinColumns = @JoinColumn(name = "lecturerId"))
+            joinColumns = @JoinColumn(name = "disciplineId"))
     private Lecturer lecturer;
 }
