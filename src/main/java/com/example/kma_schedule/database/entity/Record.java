@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 public class Record {
 
     @Id
-    @NotNull(message = "ID is mandatory")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
