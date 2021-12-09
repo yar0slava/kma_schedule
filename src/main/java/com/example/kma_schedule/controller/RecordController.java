@@ -1,6 +1,7 @@
 package com.example.kma_schedule.controller;
 
 import com.example.kma_schedule.database.entity.WeekDay;
+import com.example.kma_schedule.dto.FullRecordDto;
 import com.example.kma_schedule.dto.RecordDto;
 import com.example.kma_schedule.exceptions.RecordNotFoundException;
 import com.example.kma_schedule.service.RecordService;
@@ -44,6 +45,14 @@ public class RecordController {
     public List<RecordDto> getAll(){
         System.out.println("HERE RECORDS");
         return recordService.getAll();
+    }
+
+    @GetMapping("/all/full")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<FullRecordDto> getAllFull(){
+        System.out.println("HERE RECORDS");
+        return recordService.getAllFull();
     }
 
     @GetMapping("/lecturer/{lecturerId}")
