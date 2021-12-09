@@ -3,6 +3,7 @@ package com.example.kma_schedule.service;
 import com.example.kma_schedule.database.entity.Record;
 import com.example.kma_schedule.database.entity.WeekDay;
 import com.example.kma_schedule.database.repository.RecordRepository;
+import com.example.kma_schedule.dto.FullRecordDto;
 import com.example.kma_schedule.dto.RecordDto;
 import com.example.kma_schedule.mapper.RecordMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,10 +48,18 @@ public class RecordServiceImpl implements RecordService{
     }
 
     @Override
-    public List<RecordDto> getByLecturerId(Integer lecturerId) {
+    public List<FullRecordDto> getAllFull() {
+        return StreamSupport.stream(
+                        recordRepository.findAll().spliterator(), false )
+                .map(recordMapper::toFullDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FullRecordDto> getByLecturerId(Integer lecturerId) {
         return StreamSupport.stream(
                         recordRepository.findByLecturer_LecturerId(lecturerId).spliterator(), false )
-                .map(recordMapper::toDto)
+                .map(recordMapper::toFullDto)
                 .collect(Collectors.toList());
     }
 
@@ -63,10 +72,10 @@ public class RecordServiceImpl implements RecordService{
     }
 
     @Override
-    public List<RecordDto> getByDisciplineId(Integer disciplineId) {
+    public List<FullRecordDto> getByDisciplineId(Integer disciplineId) {
         return StreamSupport.stream(
                         recordRepository.findByDiscipline_DisciplineId(disciplineId).spliterator(), false )
-                .map(recordMapper::toDto)
+                .map(recordMapper::toFullDto)
                 .collect(Collectors.toList());
     }
 

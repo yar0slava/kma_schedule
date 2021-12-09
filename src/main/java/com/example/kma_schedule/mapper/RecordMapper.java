@@ -3,6 +3,7 @@ package com.example.kma_schedule.mapper;
 import com.example.kma_schedule.database.entity.*;
 import com.example.kma_schedule.database.entity.Record;
 import com.example.kma_schedule.database.repository.*;
+import com.example.kma_schedule.dto.FullRecordDto;
 import com.example.kma_schedule.dto.RecordDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -41,6 +42,37 @@ public class RecordMapper {
             recordDto.setClassTimeId(record.getClassTime().getClassTimeId());
             recordDto.setDisciplineId(record.getDiscipline().getDisciplineId());
             recordDto.setGroupId(record.getGroup().getId());
+
+            return recordDto;
+        }
+    }
+
+    public FullRecordDto toFullDto(Record record) {
+
+        if (Objects.isNull(record)) {
+            return null;
+        } else {
+            FullRecordDto recordDto = mapper.map(record, FullRecordDto.class);
+
+            recordDto.setLecturerId(record.getLecturer().getLecturerId());
+
+            recordDto.setLecturerName(record.getLecturer().getName());
+            recordDto.setLecturerMiddlename(record.getLecturer().getMiddlename());
+            recordDto.setLecturerSurname(record.getLecturer().getSurname());
+
+            recordDto.setClassroomId(record.getClassroom().getClassroomId());
+            recordDto.setClassroomName(record.getClassroom().getName());
+
+            recordDto.setClassTimeId(record.getClassTime().getClassTimeId());
+            recordDto.setClassTime(record.getClassTime().getClassTime());
+            recordDto.setWeekDay(record.getClassTime().getWeekDay());
+            recordDto.setWeekNumber(record.getClassTime().getWeekNumber());
+
+            recordDto.setDisciplineId(record.getDiscipline().getDisciplineId());
+            recordDto.setDisciplineName(record.getDiscipline().getName());
+
+            recordDto.setGroupId(record.getGroup().getId());
+            recordDto.setGroupNumber(record.getGroup().getGroupNumber());
 
             return recordDto;
         }

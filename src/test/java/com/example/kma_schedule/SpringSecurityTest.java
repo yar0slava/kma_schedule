@@ -26,12 +26,43 @@ public class SpringSecurityTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
+    @Test
+    @SneakyThrows
+    @WithAnonymousUser
+    public void whenAnonymousClasstime_thenForbidden() {
+        mockMvc.perform(MockMvcRequestBuilders.get("/classtime"))
+                .andExpect(MockMvcResultMatchers.status().isForbidden());
+    }
 
     @Test
     @SneakyThrows
     @WithAnonymousUser
-    public void anonymousRoleTest() {
-        mockMvc.perform(MockMvcRequestBuilders.get("/records"))
+    public void whenAnonymousLectors_thenForbidden() {
+        mockMvc.perform(MockMvcRequestBuilders.get("/lectors"))
+                .andExpect(MockMvcResultMatchers.status().isForbidden());
+    }
+
+    @Test
+    @SneakyThrows
+    @WithAnonymousUser
+    public void whenAnonymousGroup_thenForbidden() {
+        mockMvc.perform(MockMvcRequestBuilders.get("/group"))
+                .andExpect(MockMvcResultMatchers.status().isForbidden());
+    }
+
+    @Test
+    @SneakyThrows
+    @WithAnonymousUser
+    public void whenAnonymousClassroom_thenForbidden() {
+        mockMvc.perform(MockMvcRequestBuilders.get("/classroom"))
+                .andExpect(MockMvcResultMatchers.status().isForbidden());
+    }
+
+    @Test
+    @SneakyThrows
+    @WithAnonymousUser
+    public void whenAnonymousDisciplines_thenForbidden() {
+        mockMvc.perform(MockMvcRequestBuilders.get("/disciplines"))
                 .andExpect(MockMvcResultMatchers.status().isForbidden());
     }
 }
