@@ -7,6 +7,7 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -56,7 +57,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/sign-up").not().fullyAuthenticated()
                 .antMatchers("/sign-in").not().fullyAuthenticated()
                 .antMatchers("/records", "/authority").authenticated()
-                .antMatchers("/lectors","/group", "/classtime", "/classroom", "/disciplines").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.GET,"/lectors","/group", "/classtime", "/classroom", "/disciplines").hasAnyAuthority("ADMIN","USER")
+                .antMatchers(HttpMethod.POST,"/lectors","/group", "/classtime", "/classroom", "/disciplines").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PUT,"/lectors","/group", "/classtime", "/classroom", "/disciplines").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.DELETE,"/lectors","/group", "/classtime", "/classroom", "/disciplines").hasAuthority("ADMIN")
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().permitAll()
